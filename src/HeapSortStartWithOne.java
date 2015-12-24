@@ -1,7 +1,7 @@
 /**
  * Created by adamli on 12/21/15.
  */
-public class HeapSort {
+public class HeapSortStartWithOne {
     /**
      * @param pq 0 based input array
      */

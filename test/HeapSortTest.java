@@ -5,9 +5,20 @@ import org.junit.Test;
  */
 public class HeapSortTest {
     @Test
-    public void testSort() throws Exception {
+    public void HeapSortStartWithOne() throws Exception {
         int a[] = {3,5,1,2,7,8,6,0,1};
-        HeapSort.sort(a);
+
+        // test one based heap sort
+        HeapSortStartWithOne.sort(a);
+        System.out.println();
+    }
+
+    @Test
+    public void HeapSortStartWithZero() throws Exception {
+        int a[] = {3,5,1,2,7,8,6,0,1};
+
+        // test zero based heap sort
+        HeapSortStartWithZero.sort(a);
         System.out.println();
     }
 }

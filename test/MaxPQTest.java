@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
  * Created by adamli on 12/20/15.
  */
 public class MaxPQTest {
-    MaxPQ sol = new MaxPQ(5);
+    MaxPQStartWithOne sol = new MaxPQStartWithOne(5);
 
     @Test
     public void testIsEmpty() throws Exception {

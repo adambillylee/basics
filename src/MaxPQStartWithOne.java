@@ -7,11 +7,11 @@ import java.util.NoSuchElementException;
  * pq[1~N] should be decreasing
  * N = index of last number in pq = number of elements in pq
  */
-public class MaxPQ {
+public class MaxPQStartWithOne {
     int pq[];
     int N;  // size of PQ
 
-    public MaxPQ(int size) {
+    public MaxPQStartWithOne(int size) {
         pq = new int[size + 1];
         N = 0;
     }
