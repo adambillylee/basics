@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by adamli on 12/28/15.
  */
@@ -41,13 +43,6 @@ public class BSTTest {
     }
 
     @Test
-    public void testRange() throws Exception {
-        setUp();
-        sol.floor(225);
-        sol.ceiling(255);
-    }
-
-    @Test
     public void testSize() throws Exception {
         setUp();
         System.out.println(sol.size());
@@ -56,13 +51,27 @@ public class BSTTest {
     @Test
     public void testRank() throws Exception {
         setUp();
-        sol.rank(224);
-        sol.rank(1);
+        System.out.println(sol.rank(224));
+        System.out.println(sol.rank(1));
     }
 
     @Test
     public void testInOrderIteratively() throws Exception {
         setUp();
         sol.iterativeInOrder();
+    }
+
+    @Test
+    public void testInRangeCount() throws Exception {
+        setUp();
+
+        System.out.println(sol.size(71,150));
+        System.out.println("-----------------");
+        sol.nodeInRange(71, 150);
+        System.out.println();
+
+        System.out.print(sol.size(0,34));
+        System.out.println("-----------------");
+        sol.nodeInRange(0,34);
     }
 }

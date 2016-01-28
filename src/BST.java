@@ -76,6 +76,10 @@ public class BST {
         return -1;
     }
 
+    public void get(int hi, int lo) {
+
+    }
+
     /**
      * make a clean recursiveInOrder method to start with root node
      */
@@ -198,11 +202,6 @@ public class BST {
         return curr;
     }
 
-    public void range(int key) {
-        this.floor(key);
-        this.ceiling(key);
-    }
-
     /**
      * clean method interface without taking node parameter
      *
@@ -210,6 +209,34 @@ public class BST {
      */
     public int size() {
         return size(root);
+    }
+
+    /**
+     * return # of nodes between a key range
+     *
+     * @param hi upper bound of key search range
+     * @param hi lower bound of key search range
+     * @return # of nodes in tree fall in this key range
+     */
+    public int size(int lo, int hi) {
+        if (contains(lo)) {
+            return rank(hi) - rank(lo) + 1;
+        } else {
+            return rank(hi) - rank(lo);
+        }
+    }
+
+    /**
+     * find out if the key is in tree or not
+     *
+     * @param key
+     * @return
+     */
+    private boolean contains(int key) {
+        if (get(key) == -1)
+            return false;
+        else
+            return true;
     }
 
     /**
@@ -231,8 +258,10 @@ public class BST {
      * @param key
      * @return
      */
-    public void rank(int key) {
-        System.out.println(rank(key, root));
+    public int rank(int key) {
+        int rst = rank(key, root);
+
+        return rst;
     }
 
     /**
@@ -300,7 +329,7 @@ public class BST {
             Node tmp = stack.pop();
             System.out.println(tmp.value);
 
-            // once poped node has righ tree
+            // once poped node has right tree
             if (tmp.right != null) {
                 // move to the right
                 tmp = tmp.right;
@@ -311,6 +340,64 @@ public class BST {
                     tmp = tmp.left;
                 }
             }
+        }
+    }
+
+    /**
+     * print all tree nodes in lower and higher bound (boundary included)
+     * using iterative inorder traversal
+     * @param lo    lower bound
+     * @param hi    higher bound
+     */
+    public void nodeInRange(int lo, int hi) {
+        if (lo > hi) {
+            System.out.println("lo > hi");
+            return;
+        }
+
+        Node curr = root;
+        Stack<Node> stack = new Stack<>();
+
+        // put all curr and ll node
+        while (curr != null) {
+            stack.push(curr);
+            curr = curr.left;
+        }
+
+        // pop all nodes from stack one by one
+        while (!stack.isEmpty()) {
+            Node tmp = stack.pop();
+
+            // if in range, print the key
+            if(inRange(lo, hi, tmp.key))
+                System.out.println(tmp.value);
+
+            // if popped node (tmp) has a right node
+            if (tmp.right != null) {
+                // move to right
+                tmp = tmp.right;
+
+                // push all left branches into stack (notice its left branch all the way to bottom, not left trees)
+                while (tmp != null) {
+                    stack.push(tmp);
+                    tmp = tmp.left;
+                }
+            }
+        }
+    }
+
+    /**
+     * return if a key in in lo~hi range or not (boundary included)
+     * @param lo    lower bound
+     * @param hi    higher bound
+     * @param key   key to search
+     * @return  is key in range or not
+     */
+    public boolean inRange(int lo, int hi, int key) {
+        if (lo <= key && hi >= key) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

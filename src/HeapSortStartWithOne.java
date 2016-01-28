@@ -23,8 +23,8 @@ public class HeapSortStartWithOne {
         // 2nd pass: sort
         while (N >=1) {
             System.out.println(pq[1]);
-            exch(pq, 1, N--);
-            sink(pq, 1, N);
+            exch(pq, 1, N);
+            sink(pq, 1, N--);
         }
     }
 

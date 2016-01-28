@@ -14,26 +14,39 @@ public class HeapSortStartWithZero {
         int j = N - 1;
         while (j >= 0) {
             System.out.println(pq[0]);
-            exch(pq, 0, j--);
-            sink(pq, 0, j);
+            exch(pq, 0, j);
+            sink(pq, 0, j--);
         }
     }
 
-    private static void sink(int[] pq, int i, int N) {
+    private static void sink(int[] pq, int root, int N) {
+        int min = root;
+
         /** there are N number in array and last index is N-1
          * we need to compare  2*i with 2*i+1 later, so 2*i<N-1
          */
-        while (2 * i < N - 1) {
-            // find index of larger child of pq[i]
-            int j = 2 * i + 1;
-            if (pq[j] < pq[j + 1] && j < N - 1) j++;
+        while (2 * root < N) {
+            // find left and right
+            int left = 2 * root + 1;
+            int right = 2 * root + 2;
 
-            // only exchange when pq[i] < its larger child
-            if (pq[i] > pq[j]) break;
-            exch(pq, i, j);
+            // if left exist and is min, point min to left
+            if (left < N && pq[left] < pq[min])
+                min = left;
 
-            // fix current index after swap
-            i = j;
+            // if right exists and is min, point min to right
+            if (right < N && pq[right] < pq[min])
+                min = right;
+
+            // if min is not root, swap, else stop the loop
+            if (min != root) {
+                exch(pq, root, min);
+            }else{
+                break;
+            }
+
+            // after swap root = min, put root into original index
+            root = min;
         }
     }
 
