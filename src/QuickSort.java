@@ -1,51 +1,56 @@
 /**
- * Created by adamli on 12/17/15.
+ * Created by adamli on 2/11/16.
  */
 public class QuickSort {
-    private static int partition(int a[], int lo, int hi) {
-        int pivot = (lo + hi) / 2;
-        int i = lo, j = hi;
+    public static int[] QuickSort(int[] input) {
+        if (input.length == 0)
+            return input;
 
-        while (i<j) {
-            while (a[i] < a[pivot])
-                i++;
+        int start = 0;
+        int end = input.length-1;
+        helper(input, start, end);
 
-            while (a[j] > a[pivot])
-                j--;
+        return input;
+    }
 
-            if (i <= j) {
-                swap(a, i, j);
-                i++;
-                j--;
+    public static void helper(int[] input, int start, int end) {
+        // base case
+        if (start >= end)
+            return;
+
+        int toCompare = start;
+        int swapTo = end;
+        int pivotInd = toCompare + (swapTo - toCompare) / 2;
+
+        int pivotVal = input[pivotInd];
+
+        // put pivot at the end
+        swap(input, pivotInd, swapTo--);
+
+        // remember, when toCompare = swapTo, input[toCompare=swapTo] is still unchecked
+        // so condition has to be swapTo >= toCompare
+        while (swapTo >= toCompare) {
+            if (input[toCompare] >= pivotVal) {
+                swap(input, toCompare, swapTo);
+                swapTo--;
+            }else {
+                toCompare++;
             }
         }
 
-        return i;
+        /**
+         * after the while loop compared will be the last compared position +1
+         * which is the final desired index of pivot element
+         */
+        swap(input, toCompare, end);
+
+        helper(input, start, toCompare-1);
+        helper(input, toCompare+1, end);
     }
 
-    private static void sort(int a[], int lo, int hi) {
-        // base case
-        if (lo>=hi)
-            return;
-
-        // return partition pivot of current [lo~lo] such that all ele before pivot < a[pivot]
-        // and all ele after pivot > a[pivot]
-        int pivot = partition(a, lo, hi);
-
-        // recursively sort the part before and after pivot
-        sort(a, lo, pivot-1);
-        sort(a, pivot, hi);
-    }
-
-    public static int[] sort(int a[]) {
-        sort(a, 0, a.length-1);
-
-        return a;
-    }
-
-    private static void swap(int[] a, int i, int j) {
-        int tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
+    public static void swap(int[]input, int l, int r) {
+        int tmp = input[l];
+        input[l] = input[r];
+        input[r] = tmp;
     }
 }

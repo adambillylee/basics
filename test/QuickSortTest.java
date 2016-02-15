@@ -1,23 +1,50 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by adamli on 12/17/15.
+ * Created by adamli on 2/11/16.
  */
 public class QuickSortTest {
 
     @Test
-    public void testSort() throws Exception {
-        int a[] = {3,4,2,1,5,6};
+    public void testQuickSort() throws Exception {
+        int[] actual = new int[]{1, 9, 8, 3, 5};
 
-        for(int ele : QuickSort.sort(a))
-            System.out.println(ele);
+        QuickSort.QuickSort(actual);
+
+        for (int i:actual)
+            System.out.print(i + " ");
+
+        int[] expected = {1,3,5,8,9};
+
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void test3WaySort() throws Exception {
-        int a[] = {2,3,4,1,2,1,5,6,5};
+    public void testQuickSort2() throws Exception {
+        int[] actual = new int[]{1, 9, 8, 3, 5, 2};
 
-        for (int ele : ThreeWayQuickSort.sort(a, 0, a.length-1))
-            System.out.println(ele);
+        QuickSort.QuickSort(actual);
+
+        for (int i:actual)
+            System.out.print(i + " ");
+
+        int[] expected = {1,2,3,5,8,9};
+
+        Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testQuickSortWithDups() throws Exception {
+        int[] actual = new int[]{1, 3, 8, 3, 5, 2};
+
+        QuickSort.QuickSort(actual);
+
+        for (int i:actual)
+            System.out.print(i + " ");
+
+        int[] expected = {1,2,3,3,5,8};
+
+        Assert.assertArrayEquals(expected, actual);
     }
 }
