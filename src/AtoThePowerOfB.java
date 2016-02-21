@@ -9,15 +9,21 @@ public class AtoThePowerOfB {
     }
 
     public static int helper(int a, int b, int curr) {
-        if (b == 0)
-            return curr;
+        if (b == 0) {
+            System.out.format("base: helper(a=%s, b=%s, return 1)%n", a, b);
+            return 1;
+        }
 
-        if (b % 2 == 0)
-            curr = curr * curr;
-        else
-            curr = curr * a;
+        curr = helper(a, b / 2, curr);
 
-        return helper(a, b / 2, curr);
+        if (b % 2 == 0) {
+            System.out.format("helper(a=%s, b=%s, curr=%s)%n", a, b, curr);
+            return curr * curr;
+        }else{
+            System.out.format("helper(a=%s, b=%s, curr=%s)%n", a, b, curr);
+            return curr * curr * a;
+        }
+
     }
 
 }
