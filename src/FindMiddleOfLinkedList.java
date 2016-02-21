@@ -3,14 +3,15 @@
  */
 public class FindMiddleOfLinkedList {
     public static ListNode findMid(ListNode head) {
-        if (head == null || head.next == null)
+        if (head == null)
             return new ListNode(-1);
 
-        // put slow at head and fast at head.next to grantee correctness at even and odd case
+        // put both starting point to be head
         ListNode slow = head;
-        ListNode fast = head.next;
+        ListNode fast = head;
 
-        while(fast!= null && fast.next != null) {
+        // check fast.next and fast.next.next to be consistent
+        while(fast.next!= null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }

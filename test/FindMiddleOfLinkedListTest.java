@@ -48,7 +48,7 @@ public class FindMiddleOfLinkedListTest {
         int[] input = {1};
         ListNode head = buildListFromArray(input);
 
-        int expected = -1;
+        int expected = 1;
 
         int actual = FindMiddleOfLinkedList.findMid(head).getVal();
 
