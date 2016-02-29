@@ -20,6 +20,8 @@ public class BFS {
         queue.offer(root);
 
         while(!queue.isEmpty()) {
+            // for each node poped from queue
+            // add its left and right into queue if not null(for next layer)
             int size = queue.size();
             TreeNode curr = queue.poll();
             rst.add(curr.val);
