@@ -119,12 +119,14 @@ public class TreeUtil {
                 nonNullNodesInQueue--;
             }
 
+            // update counter when current node is not null
             if (curr.left != null)
                 nonNullNodesInQueue++;
 
             if(curr.right != null)
                 nonNullNodesInQueue++;
 
+            // add left and right when current node is not null
             queue.offer(curr.left);
             queue.offer(curr.right);
         }
