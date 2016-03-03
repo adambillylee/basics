@@ -31,7 +31,7 @@ public class BFS {
                     queue.offer(curr.left);
 
                 if (curr.right != null)
-                    queue.add(curr.right);
+                    queue.offer(curr.right);
             }
         }
 
