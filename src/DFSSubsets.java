@@ -17,6 +17,7 @@ public class DfsSubsets {
     }
 
     public static void helper(int[] input, int index, List<Integer> list, List<List<Integer>> rst) {
+        // base case
         if (index == input.length) {
             rst.add(new ArrayList<>(list));
             return;
@@ -30,5 +31,7 @@ public class DfsSubsets {
 
         // case2: don't add current number
         helper(input, index+1, list, rst);
+        return;
     }
+
 }
