@@ -41,7 +41,8 @@ public class RemoveCharFromString {
              * move char array[i] from j, if toRemove chars are not found
              */
             if (!foundToRemove) {
-                charArray[i++] = charArray[j];
+                charArray[i] = charArray[j];
+                i++;
             }
 
             j++;
