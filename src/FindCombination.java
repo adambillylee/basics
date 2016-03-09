@@ -16,24 +16,28 @@ public class FindCombination {
         return rst;
     }
 
-    public static void FindCombination(int money_left, int level, int[] sol, ArrayList<int []> rst) {
+    public static void FindCombination(int money_left, int level, int[] list, ArrayList<int []> rst) {
+        // base case
         if (level == coins.length) {
 
             if (money_left == 0) {
-                for (int i: sol) {
+                for (int i: list) {
                     System.out.print(i + " " );
                 }
 
                 System.out.println();
-                rst.add(sol);
+                rst.add(list);
             }
 
             return;
         }
 
+
+
         for (int i = 0; i<=money_left / coins[level]; ++i) {
-            sol[level] = i;
-            FindCombination(money_left - i* coins[level], level+1, sol, rst);
+            list[level] = i;
+            FindCombination(money_left - i* coins[level], level+1, list, rst);
+            return;
         }
     }
 }

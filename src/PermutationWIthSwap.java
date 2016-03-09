@@ -15,11 +15,12 @@ public class PermutationWithSwap {
             return;
         }
 
-        for(int i=index; i<input.length; i++) {
+        for (int i = index; i < input.length; i++) {
             swap(input, index, i);
-            helper(input, index+1);
+            helper(input, index + 1);
             swap(input, index, i);
         }
+        return;
     }
 
     public static void swap(int[] input, int l, int r) {
