@@ -1,3 +1,5 @@
+import com.sun.xml.internal.fastinfoset.util.CharArray;
+
 /**
  * Created by adamli on 3/6/16.
  */
@@ -23,32 +25,28 @@ public class RemoveCharFromString {
         /**
          * loop through each char to remove
          */
-        while (j < charArray.length) {
+        while(j < charArray.length) {
+            boolean foundToRemove = false;
             char curr = charArray[j];
 
-            // mark boolean flag if to remove char is found
-            boolean foundCharToRemove = false;
-            for (int k = 0; k < toRemove.length; k++) {
-                if (curr == toRemove[k]) {
-                    foundCharToRemove = true;
+            // check all chars in to remove, if found, mark flag to be true
+            for (char k: toRemove) {
+                if (k == curr) {
+                    foundToRemove = true;
                     break;
                 }
             }
 
-            // if to remove char is not found, move i forward and replace char i with char j
-            if (!foundCharToRemove) {
-                charArray[i] = charArray[j];
-                i++;
+            /**
+             * move char array[i] from j, if toRemove chars are not found
+             */
+            if (!foundToRemove) {
+                charArray[i++] = charArray[j];
             }
 
-            // if to remove char is found, i will not move
-
-            // always move j forward search for new char in input string
             j++;
         }
 
-
-        return String.valueOf(charArray)
-                .substring(0,i);
+        return String.valueOf(charArray).substring(0,i);
     }
 }
