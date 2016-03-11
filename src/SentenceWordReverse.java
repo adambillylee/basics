@@ -10,7 +10,7 @@ public class SentenceWordReverse {
         int i = 0;
         int j = 0;
 
-        while (j < charArray.length-1) {
+        while (j < charArray.length) {
             while (charArray[j] != ' ') {
                 j++;
 
