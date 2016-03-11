@@ -5,7 +5,7 @@ public class SentenceWordReverse {
     public static String reverseSentence(String input) {
         char[] charArray = input.toCharArray();
 
-        charArray = reverseIterative(charArray, 0, charArray.length - 1);
+        reverseIterative(charArray, 0, charArray.length - 1);
 
         int i = 0;
         int j = 0;
@@ -18,7 +18,7 @@ public class SentenceWordReverse {
                     break;
             }
 
-            charArray = reverseIterative(charArray, i, j-1);
+            reverseIterative(charArray, i, j-1);
             j++;
             i=j;
         }
@@ -27,10 +27,10 @@ public class SentenceWordReverse {
     }
 
 
-    public static char[] reverseIterative(char[] charArray, int start, int end) {
+    public static void reverseIterative(char[] charArray, int start, int end) {
         // sanity check
         if (charArray == null || charArray.length == 0)
-            return new char[charArray.length];
+            return;
 
         int i = start;
         int j = end;
@@ -40,8 +40,6 @@ public class SentenceWordReverse {
             i++;
             j--;
         }
-
-        return charArray;
     }
 
     private static void swap(char[] charArray, int start, int end) {
