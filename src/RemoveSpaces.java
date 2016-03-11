@@ -15,8 +15,8 @@ public class RemoveSpaces {
 
         char[] charArray = input.toCharArray();
 
-        int j = 0;
         int i = 0;
+        int j = 0;
         int word_count = 0;
 
         /**
