@@ -9,9 +9,9 @@ public class SentenceWordReverseTest {
 
     @Test
     public void testReverseSentence() throws Exception {
-        String input = "Iabc love Yahoo";
+        String input = "I love Yahoo";
         String actual = SentenceWordReverse.reverseSentence(input);
-        String expected = "Yahoo love Iabc";
+        String expected = "Yahoo love I";
 
         assertEquals(expected, actual);
     }
