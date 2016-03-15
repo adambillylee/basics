@@ -39,19 +39,19 @@ public class AllAnagrams {
         while (fast < input.length()) {
             // if current window size > target size, start removing head from window table
             if (fast - slow + 1 > targetSize) {
-                char head = input.charAt(slow);
+                char out = input.charAt(slow);
 
-                // if curr in map, need to update counter
-                if (map.containsKey(head)) {
-                    // if head is a valid match, reduce counter by 1
-                    if (window.get(head) <= map.get(head))
+                // if in in map, need to update counter
+                if (map.containsKey(out)) {
+                    // if out is a valid match, reduce counter by 1
+                    if (window.get(out) <= map.get(out))
                         count--;
 
                     // update windows table
-                    if (window.get(head) == 1) {
-                        window.remove(head);
+                    if (window.get(out) == 1) {
+                        window.remove(out);
                     } else {
-                        window.put(head, window.get(head) - 1);
+                        window.put(out, window.get(out) - 1);
                     }
                 }
 
@@ -59,17 +59,17 @@ public class AllAnagrams {
                 slow++;
             }
 
-            // add curr into window table
-            char curr = input.charAt(fast);
-            if (map.containsKey(curr)) {
-                if (window.containsKey(curr)) {
-                    window.put(curr, window.get(curr) + 1);
+            // add in into window table
+            char in = input.charAt(fast);
+            if (map.containsKey(in)) {
+                if (window.containsKey(in)) {
+                    window.put(in, window.get(in) + 1);
 
                     // if head is valid match, add counter by 1
-                    if (window.get(curr) <= map.get(curr))
+                    if (window.get(in) <= map.get(in))
                         count++;
                 } else {
-                    window.put(curr, 1);
+                    window.put(in, 1);
                     count++;
                 }
             }
@@ -78,7 +78,7 @@ public class AllAnagrams {
                 /**
                  * substring[startInd, endInd)
                  * startInd: inclusive
-                 * endInd: exclusive
+                 * endInd:   exclusive
                  */
                 rst.add(input.substring(slow, fast + 1));
             }
