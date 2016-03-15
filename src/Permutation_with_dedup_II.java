@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -12,11 +11,12 @@ public class Permutation_with_dedup_II {
         }
 
         HashSet<Character> visited = new HashSet<>();
-        for (int i=index; i<input.length; i++) {
+        for (int i = index; i < input.length; i++) {
             if (!visited.contains(input[i])) {
                 visited.add(input[i]);
+
                 swap(input, i, index);
-                permutate(input, index+1);
+                permutate(input, index + 1);
                 swap(input, i, index);
             }
         }
@@ -27,4 +27,5 @@ public class Permutation_with_dedup_II {
         input[i] = input[j];
         input[j] = tmp;
     }
+
 }
