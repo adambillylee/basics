@@ -61,7 +61,7 @@ public class StrReplacementLongToShort {
      * @param start    starting index of longStr in input
      * @param longStr  longStr to find in input string
      * @param shortStr shortStr to replace with in input string
-     * @return
+     * @return replaced string
      */
     public static String replace(String input, int start, String longStr, String shortStr) {
         char[] charArray = input.toCharArray();
