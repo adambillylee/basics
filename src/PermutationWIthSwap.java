@@ -20,7 +20,6 @@ public class PermutationWithSwap {
             helper(input, index + 1);
             swap(input, index, i);
         }
-        return;
     }
 
     public static void swap(int[] input, int l, int r) {
