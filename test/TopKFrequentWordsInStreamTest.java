@@ -11,5 +11,4 @@ public class TopKFrequentWordsInStreamTest {
         String[] input = {"abc", "abc", "bcec", "abbd", "bcec", "bcec", "abbd", "bcec","abc"};
         sol.printTopK(input);
     }
-
 }
