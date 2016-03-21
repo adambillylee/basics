@@ -7,13 +7,22 @@ public class ReverseLinkedListRecursive {
         if (node == null || node.next == null)
             return node;
 
-        ListNode next = node.next;
+        /**
+         * reversed head node
+         * with next link all the way to next node
+         */
+        ListNode reverseHead = reverse(node.next);
 
-        ListNode newHead = reverse(next);
+        /**
+         * with reverse head -> next node
+         * fix next node to current node link
+         */
+        node.next.next = node;
 
-        next.next = node;
+        // curr node should point to null
         node.next = null;
 
-        return newHead;
+        // still return that reversed had node to next level
+        return reverseHead;
     }
 }

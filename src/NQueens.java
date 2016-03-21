@@ -4,25 +4,25 @@ import java.util.ArrayList;
  * Created by adamli on 3/19/16.
  */
 public class NQueens {
-    public static ArrayList<int[]> NQueens(int n) {
-        if (n < 2) {
+    public static ArrayList<int[]> NQueens(int size) {
+        if (size < 2) {
             System.out.println("n<2");
         }
 
-        int[] board = new int[n];
+        int[] board = new int[size];
 
         ArrayList<int[]> rst = new ArrayList<>();
-        helper(rst, board, 0, n);
+        helper(rst, board, 0, size);
 
         return rst;
     }
 
-    static void helper(ArrayList<int[]> rst, int[] board, int currRow, int n) {
+    static void helper(ArrayList<int[]> rst, int[] board, int currRow, int size) {
         /**
          * base case:
          * based on currRow
          */
-        if (currRow == n) {
+        if (currRow == size) {
             drawBoard(board);
             rst.add(board.clone());
             return;
@@ -32,7 +32,7 @@ public class NQueens {
          * each layer has n choices (each row has n columns)
          * recursion call in loop for n-branch recursion tree
          */
-        for (int currCol = 0; currCol < n; currCol++) {
+        for (int currCol = 0; currCol < size; currCol++) {
             boolean isAttacked = false;
             /**
              * check all existing column on board to validate current queen position
@@ -48,7 +48,7 @@ public class NQueens {
                 // if not attacked, add current queen onto board
                 board[currRow] = currCol;
                 // go to next recursion level
-                helper(rst, board, currRow + 1, n);
+                helper(rst, board, currRow + 1, size);
 
                 /**
                  * base case is based on currRow but currRow+1 on next level doesn't change currRow value
@@ -65,7 +65,7 @@ public class NQueens {
             return true;
 
         // if slope = 1, attacking each other
-        if (Math.abs(r1 - r2) == Math.abs(c1 - c2))
+        if (Math.abs(c1 - c2) == Math.abs(r1 - r2))
             return true;
 
         return false;

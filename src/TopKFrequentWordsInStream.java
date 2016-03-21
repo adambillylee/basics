@@ -37,7 +37,7 @@ public class TopKFrequentWordsInStream {
 
     TrieNode root;
     int k;
-    PriorityQueue<TrieNode> pq;
+    PriorityQueue<TrieNode> pq; // min heap
 
 
     public TopKFrequentWordsInStream(int k) {
