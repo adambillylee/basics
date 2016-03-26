@@ -29,9 +29,11 @@ public class WallsAndGates {
             return;
 
         /**
-         * look for better solution only if distance <= curr cell
+         * look for better solution only if distance = curr cell
+         * or this is starting gate itself (distance == 0)
+         * no need for keeping visited[][], if turned back distance will be longer
          */
-        if (distance <= curr) {
+        if (distance < curr || distance == 0) {
             rooms[row][col] = distance;
             findDistance(rooms, row + 1, col, distance + 1);
             findDistance(rooms, row, col + 1, distance + 1);
