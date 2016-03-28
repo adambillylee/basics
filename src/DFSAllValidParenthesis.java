@@ -18,15 +18,16 @@ public class DfsAllValidParenthesis {
 
     /**
      * DFS helper for all parenthesis
-     * @param n # of parenthesis pairs
-     * @param l # of left parenthesis used so far
-     * @param r # of right parenthesis used so far
+     *
+     * @param n    # of parenthesis pairs
+     * @param l    # of left parenthesis used so far
+     * @param r    # of right parenthesis used so far
      * @param list current partial result
-     * @param rst final result
+     * @param rst  final result
      */
     private static void helper(int n, int l, int r, ArrayList<String> list, List<List<String>> rst) {
         // base case
-        if (l==n && r==n) {
+        if (l == n && r == n) {
             rst.add(new ArrayList<>(list));
             return;
         }
@@ -34,15 +35,15 @@ public class DfsAllValidParenthesis {
         // add left parenthesis
         if (l < n) {
             list.add("(");
-            helper(n, l+1, r, list, rst);
-            list.remove(list.size()-1);
+            helper(n, l + 1, r, list, rst);
+            list.remove(list.size() - 1);
         }
 
         // add right parenthesis
-        if(r < l) {
+        if (r < l) {
             list.add(")");
-            helper(n, l, r+1, list, rst);
-            list.remove(list.size()-1);
+            helper(n, l, r + 1, list, rst);
+            list.remove(list.size() - 1);
         }
     }
 }

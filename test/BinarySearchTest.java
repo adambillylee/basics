@@ -1,4 +1,3 @@
-import org.intellij.lang.annotations.JdkConstants;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,7 +9,7 @@ public class BinarySearchTest {
 
     @Test
     public void testSearchFound() throws Exception {
-        int[] input = new int[] {1,2,3,4,5,6};
+        int[] input = new int[]{1, 2, 3, 4, 5, 6};
         int target = 6;
 
         int actual = BinarySearch.search(input, target);
@@ -21,7 +20,7 @@ public class BinarySearchTest {
 
     @Test
     public void testSearchNotFound() throws Exception {
-        int[] input = new int[] {1,2,3,4,5,6};
+        int[] input = new int[]{1, 2, 3, 4, 5, 6};
         int target = 7;
 
         int actual = BinarySearch.search(input, target);

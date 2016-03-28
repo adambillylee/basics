@@ -1,5 +1,3 @@
-import org.jetbrains.annotations.Contract;
-
 import java.util.NoSuchElementException;
 
 /**
@@ -66,10 +64,9 @@ public class MinPQStartWithZero {
         pq[j] = tmp;
     }
 
-    @Contract(pure = true)
     private boolean isMinPQ() {
-        for (int i=0; i<N-1-1; i++)
-            if (pq[i] > pq[i+1])
+        for (int i = 0; i < N - 1 - 1; i++)
+            if (pq[i] > pq[i + 1])
                 return false;
 
         return true;
