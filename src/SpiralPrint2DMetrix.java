@@ -17,19 +17,19 @@ public class SpiralPrint2DMetrix {
             return;
         }
 
-        // print upper row
+        // press upper row
         for (int i = 0; i < size-1; i++)
             rst.add(metrix[offSet][offSet + i]);
 
-        // print right column
+        // press right column
         for (int i = 0; i < size-1; i++)
             rst.add(metrix[offSet + i][offSet + size - 1]);
 
-        // print bottom row
+        // press bottom row
         for (int i = size - 1; i > 0; i--)
             rst.add(metrix[offSet + size - 1][offSet + i]);
 
-        // print left column
+        // press left column
         for (int i = size-1; i > 0; i--) {
             rst.add(metrix[offSet + i][offSet]);
         }

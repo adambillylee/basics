@@ -93,7 +93,7 @@ public class TreeUtil {
 
         /**
          * transformed BFS
-         * since we need to print null treeNode as well, we need to add null nodes into queue
+         * since we need to press null treeNode as well, we need to add null nodes into queue
          * as a result, we cannot simply use queue size to determine the end of BFS
          * use counter to track non null node count in queue, stop when all nodes in queue is null
          */

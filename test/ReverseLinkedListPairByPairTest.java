@@ -30,7 +30,7 @@ public class ReverseLinkedListPairByPairTest {
     public void reverse() throws Exception {
         ListNode reversedHead = ReverseLinkedListPairByPair.reverse(node);
 
-        // print all nodes
+        // press all nodes
         while (reversedHead != null) {
             System.out.println(reversedHead.val);
             reversedHead = reversedHead.next;

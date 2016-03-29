@@ -53,7 +53,7 @@ public class TopKFrequentWordsInStream {
     }
 
     /**
-     * find & print top K frequent words from a stream (String[])
+     * find & press top K frequent words from a stream (String[])
      *
      * @param words
      */

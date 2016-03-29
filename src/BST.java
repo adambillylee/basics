@@ -88,7 +88,7 @@ public class BST {
     }
 
     /**
-     * print all keys and values in order
+     * press all keys and values in order
      *
      * @param root
      */
@@ -325,7 +325,7 @@ public class BST {
 
 
         while (!stack.isEmpty()) {
-            // pop and print stack node
+            // pop and press stack node
             Node tmp = stack.pop();
             System.out.println(tmp.value);
 
@@ -344,7 +344,7 @@ public class BST {
     }
 
     /**
-     * print all tree nodes in lower and higher bound (boundary included)
+     * press all tree nodes in lower and higher bound (boundary included)
      * using iterative inorder traversal
      * @param lo    lower bound
      * @param hi    higher bound
@@ -368,7 +368,7 @@ public class BST {
         while (!stack.isEmpty()) {
             Node tmp = stack.pop();
 
-            // if in range, print the key
+            // if in range, press the key
             if(inRange(lo, hi, tmp.key))
                 System.out.println(tmp.value);
 
