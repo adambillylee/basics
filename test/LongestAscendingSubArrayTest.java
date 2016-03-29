@@ -14,4 +14,12 @@ public class LongestAscendingSubArrayTest {
 
         assertEquals(7, actual);
     }
+
+    @Test
+    public void getLength2() throws Exception {
+        int input[] = {1,2,3,2,5,6,7,1};
+        int actual = LongestAscendingSubArray.getLength(input);
+
+        assertEquals(4, actual);
+    }
 }

@@ -6,7 +6,14 @@ public class LongestAscendingSubArray {
         if (input.length == 0)
             return 0;
 
+        /**
+         * check back all input upto now, whats the max inc. subarray length
+         */
         int global = 1;
+
+        /**
+         * within this iteration and prev iteration, whats the max length
+         */
         int local = 1;
         /**
          * recursive relation
