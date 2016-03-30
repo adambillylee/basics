@@ -1,5 +1,3 @@
-package singletonExample;
-
 /**
  * Created by adamli on 3/28/16.
  */
@@ -26,7 +24,11 @@ public class MaximunProductRopeCut {
          */
         for (int i = 2; i <= length; i++) {
             int local = 0;
-            for (int j = 1; j < i; j++) {
+
+            /**
+             * optimization: j<= i/2, since left and right swaps value after half
+             */
+            for (int j = 1; j <= i / 2; j++) {
                 /**
                  * left [0~j] two cases
                  * have cut in [0~j]: m[j]

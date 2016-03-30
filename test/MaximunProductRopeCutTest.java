@@ -1,5 +1,4 @@
 import org.junit.Test;
-import singletonExample.MaximunProductRopeCut;
 
 import static org.junit.Assert.assertEquals;
 

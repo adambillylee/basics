@@ -15,6 +15,7 @@ public class GUIFactoryTest {
         win = new WindowsGUIFactory();
         osx = new OSXGUIFactory();
     }
+
     @Test
     public void testCreateWinButton() {
         Button button = win.createButton();
