@@ -27,6 +27,9 @@ public class LargestSumOfSubArray {
              * two cases:
              * 1. if prev doesn't bring positive contribution to curr, start with input[i]
              * 2. if prev > 0 and bring positive contribution to curr, bring prev into curr (prev + input[i])
+             *
+             * BUG POINT: add input[i] < 0 makes curr smaller than prev but doesn't mean curr can't bring contribution
+             * to the future, input[i] < 0 is not a valid condition to make curr restart at i
              */
             if (prev < 0) {
                 curr = input[i];
@@ -36,6 +39,11 @@ public class LargestSumOfSubArray {
             }
 
             currEnd = i;
+
+            /**
+             * BUG POINT: forget to update prev to curr
+             */
+            prev = curr;
 
             if (curr > max) {
                 max = curr;
