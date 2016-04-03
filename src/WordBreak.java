@@ -17,7 +17,11 @@ public class WordBreak {
          * cut position = string index + 1
          */
         for (int i = 1; i <= s.length(); i++) {
-            for (int j = 0; j < i; j++) {
+            /**
+             * Optimization:
+             * j going backward from i-1, will reach a bigger m[j] true value quicker
+             */
+            for (int j = i-1; j >=0; j--) {
 
                 /**
                  * BUG POINT:
