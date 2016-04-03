@@ -51,9 +51,9 @@ public class JumpGame {
                 /**
                  * two conditions for j to i is reachable
                  * 1. j is reachable
-                 * 2. from input[0~j] there is a cell can jump to input[i]
+                 * 2. from input[0~i] there is a cell can jump to input[i]
                  */
-                if (m[j] && j + input[j] >= i) {
+                if (m[j] && (j + input[j] >= i)) {
                     m[i] = true;
 
                     // if one feasible solution is found, no need to check further

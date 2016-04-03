@@ -14,6 +14,6 @@ public class MaximunProductRopeCutTest {
 
     @Test
     public void maxCutDP() throws Exception {
-        assertEquals(MaximunProductRopeCut.maxCutDP(10), 36);
+        assertEquals(MaximunProductRopeCut.maxCutDP(8), 18);
     }
 }
