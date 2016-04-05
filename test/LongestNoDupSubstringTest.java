@@ -24,4 +24,10 @@ public class LongestNoDupSubstringTest {
         String input = "pwwkew";
         assertEquals(3, LongestNoDupSubstring.lengthOfLongestSubstring(input));
     }
+
+    @Test
+    public void lengthOfLongestbackSubstring2() throws Exception {
+        String input = "dvdf";
+        assertEquals(3, LongestNoDupSubstring.lengthOfLongestSubstring(input));
+    }
 }
