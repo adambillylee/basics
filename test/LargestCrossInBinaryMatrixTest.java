@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 /**
  * Created by adamli on 4/6/16.
  */
-public class LargestCrossTest {
+public class LargestCrossInBinaryMatrixTest {
     @Test
     public void findCross() throws Exception {
         int [][] input = {
@@ -15,7 +15,7 @@ public class LargestCrossTest {
                 {0,1,1,1}
         };
 
-        assertEquals(2, LargestCross.findCross(input));
+        assertEquals(2, LargestCrossInBinaryMatrix.findCross(input));
     }
 
 }

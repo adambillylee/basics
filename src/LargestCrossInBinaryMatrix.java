@@ -1,7 +1,7 @@
 /**
  * Created by adamli on 4/5/16.
  */
-public class LargestCross {
+public class LargestCrossInBinaryMatrix {
     public static int findCross(int[][] input) {
         int m = input.length;
         int n = input[0].length;
