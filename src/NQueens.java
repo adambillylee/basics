@@ -35,7 +35,7 @@ public class NQueens {
         for (int currCol = 0; currCol < size; currCol++) {
             boolean isAttacked = false;
             /**
-             * check all existing column on board to validate current queen position
+             * check all existing column on board to validateRecurr current queen position
              */
             for (int existingRow = 0; existingRow < currRow; existingRow++) {
                 isAttacked = isAttacked(existingRow, board[existingRow], currRow, currCol);

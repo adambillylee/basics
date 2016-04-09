@@ -2,6 +2,9 @@
  * Created by adamli on 4/9/16.
  */
 public class ValidateBST {
+    /**
+     * recursive tree by tree check solution
+     */
     static class ReturnType {
         boolean isValid;
         long min;
@@ -14,16 +17,16 @@ public class ValidateBST {
         }
     }
 
-    public static boolean validate(TreeNode root) {
-        return helper(root).isValid;
+    public static boolean validateRecurr(TreeNode root) {
+        return validateRecurrHelper(root).isValid;
     }
 
-    private static ReturnType helper(TreeNode root) {
+    private static ReturnType validateRecurrHelper(TreeNode root) {
         if (root == null)
             return new ReturnType(true, Long.MAX_VALUE, Long.MIN_VALUE);
 
-        ReturnType left = helper(root.left);
-        ReturnType right = helper(root.right);
+        ReturnType left = validateRecurrHelper(root.left);
+        ReturnType right = validateRecurrHelper(root.right);
 
         boolean isValid = left.isValid && right.isValid;
 
@@ -37,5 +40,27 @@ public class ValidateBST {
         long max = Math.max(root.val, right.max);
 
         return new ReturnType(isValid, min, max);
+    }
+
+
+    /**
+     * in order solution
+     */
+    static TreeNode prev = new TreeNode(Integer.MIN_VALUE);
+
+    public static boolean validateInorder(TreeNode root) {
+        return validateInOrderHelper(root);
+    }
+
+    private static boolean validateInOrderHelper(TreeNode root) {
+        if (root == null)
+            return true;
+
+        boolean left = validateInOrderHelper(root.left);
+        boolean right = validateInOrderHelper(root.right);
+        boolean curr = root.val > prev.val;
+
+        prev = root;
+        return left && right && curr;
     }
 }
