@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * Created by adamli on 4/9/16.
  */
-public class TreeInOrderTraversalInterative {
+public class BinaryTreeInOrderTraversalInterative {
     public static List<Integer> inOrderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack();
         List<Integer> rst = new ArrayList<>();

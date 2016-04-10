@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * Created by adamli on 4/9/16.
  */
-public class TreePreOrderTraversalInterative {
+public class BinaryTreePreOrderTraversalInterative {
     public static List<Integer> preOrderTraversal(TreeNode root) {
         List<Integer> rst = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
