@@ -10,7 +10,7 @@ public class TreeInOrderTraversalInterativeTest {
     public void inorderTraversal() throws Exception {
         TreeNode root = TreeUtil.getRoot(new String[]{"2", "1", "3", "5", "6", "7", "8"});
 
-        List<Integer> rst = TreeInOrderTraversalInterative.inorderTraversal(root);
+        List<Integer> rst = TreeInOrderTraversalInterative.inOrderTraversal(root);
 
         for (Integer ele :rst) {
             System.out.println(ele);
