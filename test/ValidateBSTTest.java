@@ -11,14 +11,25 @@ public class ValidateBSTTest {
     public void validate1() throws Exception {
         TreeNode root = TreeUtil.getRoot(new String[]{"1", "2", "3"});
         assertFalse(ValidateBST.validateRecurr(root));
-        assertFalse(ValidateBST.validateInorder(root));
+
+        assertFalse(new ValidateBST().validateInorder(root));
     }
 
     @Test
     public void validate2() throws Exception {
         TreeNode root = TreeUtil.getRoot(new String[]{"2147483647"});
         assertTrue(ValidateBST.validateRecurr(root));
-        assertTrue(ValidateBST.validateInorder(root));
+        assertTrue(new ValidateBST().validateInorder(root));
+    }
+
+    @Test
+    public void validate3() throws Exception {
+        TreeNode root = new TreeNode(0);
+        TreeNode minusOne = new TreeNode(-1);
+        root.left = minusOne;
+
+        assertTrue(ValidateBST.validateRecurr(root));
+        assertTrue(new ValidateBST().validateInorder(root));
     }
 
 }

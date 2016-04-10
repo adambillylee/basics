@@ -46,21 +46,23 @@ public class ValidateBST {
     /**
      * in order solution
      */
-    static TreeNode prev = new TreeNode(Integer.MIN_VALUE);
+    TreeNode prev = null;
 
-    public static boolean validateInorder(TreeNode root) {
+    public boolean validateInorder(TreeNode root) {
         return validateInOrderHelper(root);
     }
 
-    private static boolean validateInOrderHelper(TreeNode root) {
+    private boolean validateInOrderHelper(TreeNode root) {
         if (root == null)
             return true;
 
-        boolean left = validateInOrderHelper(root.left);
-        boolean right = validateInOrderHelper(root.right);
-        boolean curr = root.val > prev.val;
+        if (!validateInOrderHelper(root.left))
+            return false;
+
+        if (prev != null && root.val <= prev.val)
+            return false;
 
         prev = root;
-        return left && right && curr;
+        return validateInOrderHelper(root.right);
     }
 }
