@@ -14,4 +14,19 @@ public class RandomElementsInDataStream {
         else
             return prev;
     }
+
+    public static int[] randomKElements(int input, int size, int[] prev) {
+        int k = 5;
+
+        Random rand = new Random();
+
+        int random = rand.nextInt(size + 1);
+
+        if (random < k) {
+            prev[random] = input;
+            return prev;
+        } else {
+            return prev;
+        }
+    }
 }
