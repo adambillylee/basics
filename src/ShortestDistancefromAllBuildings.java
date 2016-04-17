@@ -51,7 +51,6 @@ public class ShortestDistancefromAllBuildings {
                      * add the distance to all empty space to this building to distSum
                      */
                     boolean canVisitAllOtherBuildings = addDistance(grid, distSum, accessibleBuildings, i, j);
-//                    System.out.println("finished BFS--------------------------");
 
                     /**
                      * if there is any building not accessible from this building, return -1 directly
@@ -193,28 +192,24 @@ public class ShortestDistancefromAllBuildings {
 
         Position up = new Position(position.row - 1, position.col);
         if (isValidPair(up, grid, isVisited)) {
-//            System.out.println(up.row + "," + up.col);
             rst.add(up);
             isVisited[up.row][up.col] = true;
         }
 
         Position down = new Position(position.row + 1, position.col);
         if (isValidPair(down, grid, isVisited)) {
-//            System.out.println(down.row + "," + down.col);
             rst.add(down);
             isVisited[down.row][down.col] = true;
         }
 
         Position left = new Position(position.row, position.col - 1);
         if (isValidPair(left, grid, isVisited)) {
-//            System.out.println(left.row + "," + left.col);
             rst.add(left);
             isVisited[left.row][left.col] = true;
         }
 
         Position right = new Position(position.row, position.col + 1);
         if (isValidPair(right, grid, isVisited)) {
-//            System.out.println(right.row + "," + right.col);
             rst.add(right);
             isVisited[right.row][right.col] = true;
         }
