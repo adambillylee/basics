@@ -7,11 +7,21 @@ import static org.junit.Assert.*;
  */
 public class KthLargestElementInAnArrayTest {
     @Test
-    public void findKthLargest() throws Exception {
+    public void findKthLargest1() throws Exception {
         int nums[] = {3,2,1,5,6,4};
         int k = 2;
 
-        int actual = KthLargestElementInAnArray.findKthLargest(nums, k);
+        int actual = KthLargestElementInAnArray.findKthLargestPQ(nums, k);
+
+        assertEquals(5, actual);
+    }
+
+    @Test
+    public void findKthLargest2() throws Exception {
+        int nums[] = {3,2,1,5,6,4};
+        int k = 2;
+
+        int actual = KthLargestElementInAnArray.findKthLargestQuickSelect(nums, k);
 
         assertEquals(5, actual);
     }
