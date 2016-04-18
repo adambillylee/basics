@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by adamli on 3/1/16.
  */
-public class DfsAllValidParenthesis {
+public class DFSAllValidParenthesis {
     public static List<List<String>> valid_parenthesis(int n) {
         List<List<String>> rst = new ArrayList<List<String>>();
 

@@ -12,7 +12,7 @@ public class DFS_All_Valid_ParenthesisTest {
     public void testValid_parenthesis() throws Exception {
         int n = 3;
 
-        List rst = DfsAllValidParenthesis.valid_parenthesis(n);
+        List rst = DFSAllValidParenthesis.valid_parenthesis(n);
 
         Iterator iter = rst.iterator();
 
