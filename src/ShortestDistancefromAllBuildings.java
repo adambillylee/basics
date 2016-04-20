@@ -83,6 +83,7 @@ public class ShortestDistancefromAllBuildings {
      *
      * @param grid    map
      * @param distSum sum of distance from building to that house
+     * @param accessibleBuildings  number of building accessible from this position
      * @param i       i coordinate
      * @param j       j coordinate
      * @return Can this building access all other buildings on the map? (grid[i][j] = 1)
