@@ -3,41 +3,40 @@ import java.util.Queue;
 
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int importance[] = new int[numCourses];
+        int indegree[] = new int[numCourses];
         int graph[][] = new int[numCourses][numCourses];
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = new LinkedList<>();
         int counter = 0;
 
-        // loop throu prereqs to build graph and importance list
+        // build graph matrix and indegree from input
         for (int[] pair : prerequisites) {
             int course = pair[0];
             int preReq = pair[1];
 
+            // from preReq to course + 1
             if (graph[preReq][course] == 0)
-                importance[course]++;
+                indegree[preReq]++;
 
+            // mark connection from preReq to course
             graph[preReq][course] = 1;
         }
 
-        // add course of zero importance into queue
+        // push all nodes with no in degrees into queue
         for (int i = 0; i < numCourses; i++) {
-            if (importance[i] == 0) {
+            if (indegree[i] == 0)
                 queue.offer(i);
-            }
         }
 
-        // BFS
         while (!queue.isEmpty()) {
             int curr = queue.poll();
             counter++;
-            // System.out.println("pull course: "+curr+" from queue");
 
-            // minus importance of next nodes by 1
             for (int i = 0; i < numCourses; i++) {
+                // find all neighbour nodes from curr node
                 if (graph[curr][i] > 0) {
-                    importance[i]--;
+                    indegree[i]--;
 
-                    if (importance[i] == 0)
+                    if (graph[curr][i] == 0)
                         queue.offer(i);
                 }
             }
