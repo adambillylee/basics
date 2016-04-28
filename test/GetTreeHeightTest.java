@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -8,6 +9,7 @@ import static org.junit.Assert.*;
 public class GetTreeHeightTest {
 
     @Test
+    @Ignore
     public void testGetHeightNormal() throws Exception {
         TreeNode root = TreeUtil.getRoot(new String[]{"1","2","3","4"});
 
