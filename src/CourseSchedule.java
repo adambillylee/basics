@@ -15,7 +15,7 @@ public class CourseSchedule {
 
             // from preReq to course + 1
             if (graph[preReq][course] == 0)
-                indegree[preReq]++;
+                indegree[course]++;
 
             // mark connection from preReq to course
             graph[preReq][course] = 1;
