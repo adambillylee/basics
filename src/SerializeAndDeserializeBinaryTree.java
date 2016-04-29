@@ -9,12 +9,12 @@ public class SerializeAndDeserializeBinaryTree {
         if (root == null)
             return "";
 
-        buildCodex(root, sb);
+        buildCodec(root, sb);
 
         return sb.deleteCharAt(sb.length()-1).toString();
     }
 
-    private void buildCodex(TreeNode root, StringBuilder sb) {
+    private void buildCodec(TreeNode root, StringBuilder sb) {
         if (root == null) {
             sb.append("#");
             sb.append(',');
@@ -23,8 +23,8 @@ public class SerializeAndDeserializeBinaryTree {
 
         sb.append(root.val);
         sb.append(',');
-        buildCodex(root.left, sb);
-        buildCodex(root.right, sb);
+        buildCodec(root.left, sb);
+        buildCodec(root.right, sb);
     }
 
     public TreeNode deserialize(String codex) {
