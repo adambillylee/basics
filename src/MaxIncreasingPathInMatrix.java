@@ -4,7 +4,7 @@
 public class MaxIncreasingPathInMatrix {
     int max = 0;
     public int longestIncreasingPath(int[][] matrix) {
-        if (matrix == null || matrix[0].length == 0)
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return 0;
 
         int m = matrix.length;
