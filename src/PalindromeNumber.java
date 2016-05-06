@@ -5,12 +5,17 @@ public class PalindromeNumber {
     int x;
     int y;
     int divider;
+    int length = 0;
 
     public boolean isPalindrome(int x) {
+        if (x < 0)
+            return false;
+
         this.x = x;
         this.y = x;
 
         this.divider = getDivider();
+        length = length / 2 + 1;
 
         while (this.x > 0) {
             int left = getLeft();
@@ -25,6 +30,7 @@ public class PalindromeNumber {
 
     private int getDivider() {
         int divider = 1;
+        length++;
 
         while (x / divider >= 10) {
             divider = divider * 10;
