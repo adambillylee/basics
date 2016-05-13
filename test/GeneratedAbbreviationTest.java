@@ -26,4 +26,12 @@ public class GeneratedAbbreviationTest {
             System.out.println(ele);
     }
 
+    @Test
+    public void generateAbbreviations3() throws Exception {
+        String input = "ab";
+        List<String> rst = sol.generateAbbreviations(input);
+
+        for (String ele : rst)
+            System.out.println(ele);
+    }
 }
