@@ -8,10 +8,10 @@ public class DfsSubsets {
     public static List<List<Integer>> subSets(int[] input) {
         List<List<Integer>> rst = new ArrayList<>();
 
-        if(input == null || input.length == 0)
+        if (input == null || input.length == 0)
             return rst;
 
-        helper(input, 0, new ArrayList<Integer>(), rst);
+        helper(input, 0, new ArrayList<>(), rst);
 
         return rst;
     }
@@ -31,7 +31,6 @@ public class DfsSubsets {
 
         // case2: don't add current number
         helper(input, index+1, list, rst);
-        return;
     }
 
 }

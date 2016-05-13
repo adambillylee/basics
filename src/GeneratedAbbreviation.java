@@ -18,8 +18,8 @@ public class GeneratedAbbreviation {
         return rst;
     }
 
-    private void helper(List<String> rst, String word, int index, StringBuilder sb, boolean prevNum) {
-        if (index == word.length()) {
+    private void helper(List<String> rst, String word, int start, StringBuilder sb, boolean prevNum) {
+        if (start == word.length()) {
             rst.add(sb.toString());
             return;
         }
@@ -27,23 +27,23 @@ public class GeneratedAbbreviation {
         int len = sb.length();
 
         /**
-         * loop from current index to end of word
+         * loop from current start to end of word
          */
-        for (int i = index; i < word.length(); i++) {
+        for (int i = start; i < word.length(); i++) {
             /**
-             * if this is the first iteration of this index, we can choose to add char into word
+             * if this is the first iteration of this start, we can choose to add char into word
              */
-            if (i == index) {
+            if (i == start) {
                 helper(rst, word, i + 1, sb.append(word.charAt(i)), false);
                 sb.setLength(len);
             }
 
             /**
              * if previous position is not a number, we can choose to add number into word
-             * number depends on index and current i
+             * number depends on start and current i
              */
             if (!prevNum) {
-                helper(rst, word, i + 1, sb.append(getNumberString(index, i)), true);
+                helper(rst, word, i + 1, sb.append(getNumberString(start, i)), true);
                 sb.setLength(len);
             }
         }
