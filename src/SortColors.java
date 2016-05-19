@@ -3,22 +3,22 @@
  */
 public class SortColors {
     public void sortColors(int[] nums) {
-        int i = 0;
-        int j = nums.length - 1;
-        int k = 0;
+        int afterFirst0 = 0;
+        int beforeFirst2 = nums.length - 1;
+        int cursor = 0;
 
-        while (k <= j) {
-            int curr = nums[k];
+        while (cursor <= beforeFirst2) {
+            int curr = nums[cursor];
 
             if (curr == 0) {
-                swap(nums, k, i);
-                i++;
-                k++;
+                swap(nums, cursor, afterFirst0);
+                afterFirst0++;
+                cursor++;
             } else if (curr == 2) {
-                swap(nums, k, j);
-                j--;
+                swap(nums, cursor, beforeFirst2);
+                beforeFirst2--;
             } else {
-                k++;
+                cursor++;
             }
         }
     }
