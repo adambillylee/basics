@@ -30,6 +30,7 @@ public class MergeIntervals {
         for (Interval interval : intervals) {
             /**
              * if new interval overlaps on current interval,
+             * BUGPOINT:
              * update end interval with math of current end and new end (since current end could still be bigger)
              */
             if (interval.start <= end) {
@@ -45,6 +46,7 @@ public class MergeIntervals {
         }
 
         /**
+         * BUGPOINT:
          * the very last start and end interval will never get add into result
          * add this latest interval into rst
          */
