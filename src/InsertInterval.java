@@ -13,14 +13,14 @@ public class InsertInterval {
             return rst;
         }
 
-        // before newInterval
+        // before newInterval, current.end < insert.start
         int curr = 0;
         while (curr < intervals.size() && intervals.get(curr).end < newInterval.start) {
             rst.add(intervals.get(curr));
             curr++;
         }
 
-        // merge new intervel
+        // merge new interval, while current.start <= insert.end
         int start = newInterval.start;
         int end = newInterval.end;
         while (curr < intervals.size() && intervals.get(curr).start <= newInterval.end) {
@@ -32,7 +32,7 @@ public class InsertInterval {
         Interval tmp = new Interval(start, end);
         rst.add(tmp);
 
-        // add the rest
+        // add the rest of the elements
         while (curr < intervals.size()) {
             rst.add(intervals.get(curr));
             curr++;
