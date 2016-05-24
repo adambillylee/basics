@@ -42,7 +42,16 @@ public class BinaryTreeVerticalOrderTraversalNoHashTable {
 
                 link.vals.add(tree.val);
 
+                /**
+                 * if there is a left tree
+                 */
                 if (tree.left != null) {
+                    /**
+                     * if left link is empty
+                     * we must create a new link node on the left
+                     * and fix left and right pointer on creation
+                     * to guarantee next iteration can refer back
+                     */
                     if (link.left == null) {
                         link.left = new DNode();
                         link.left.right = link;
@@ -51,6 +60,9 @@ public class BinaryTreeVerticalOrderTraversalNoHashTable {
                     next.add(new Pair(link.left, tree.left));
                 }
 
+                /**
+                 * same for right tree
+                 */
                 if (tree.right != null) {
                     if (link.right == null) {
                         link.right = new DNode();
