@@ -38,6 +38,8 @@ public class CountingBits {
             }
 
             /**
+             * when get to a new power of two, we get a new leading 1 at the left most bit
+             * and rest of bits loop back from 0 ~ new power of 2 - 1, as a result:
              * result i = (rst i - current power of 2) + 1
              * rst[5] = rst[5-4] + 1
              * rst[8] = rst[8-8] + 1
