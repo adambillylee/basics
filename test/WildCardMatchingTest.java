@@ -41,4 +41,28 @@ public class WildCardMatchingTest {
         assertTrue(sol.isMatch(s, p));
     }
 
+    @Test
+    public void isMatch5() throws Exception {
+        String s = "b";
+        String p = "*?*?*";
+
+        assertFalse(sol.isMatch(s, p));
+    }
+
+    @Test
+    public void isMatch6() throws Exception {
+        String s = "";
+        String p = "*";
+
+        assertTrue(sol.isMatch(s, p));
+    }
+
+    @Test
+    public void isMatch7() throws Exception {
+        String s = "aa";
+        String p = "*";
+
+        assertTrue(sol.isMatch(s, p));
+    }
+
 }

@@ -2,74 +2,70 @@
  * Created by adamli on 5/10/16.
  */
 public class WildCardMatching {
-    Boolean dp[][];
 
     public boolean isMatch(String s, String p) {
         if (s == null || p == null)
             return false;
 
-        dp = new Boolean[s.length()][p.length()];
+        int currP = 0;
+        int currS = 0;
+        int startP = -1;
+        int startS = -1;
+        int dist = -1;
 
-        return helper(s, p, 0, 0);
-    }
+        /**
+         * make sure s matches to the end when ending the loop
+         */
+        while (currS < s.length()) {
+            /**
+             * if current P char is star
+             */
+            if (currP < p.length() && p.charAt(currP) == '*') {
+                // record start matching location of P, start matching after current start later
+                startP = currP;
 
-    public boolean helper(String s, String p, int indS, int indP) {
-        if (indP == p.length())
-            return indS == s.length();
+                // record start matching location of S
+                startS = currS;
 
-        if (indS >= s.length())
-            return false;
+                // the matching length of current * in S, start with 0 (* matches nothing)
+                dist = 0;
 
-        if (dp[indS][indP] != null)
-            return dp[indS][indP].booleanValue();
-
-        if (p.charAt(indP) != '*') {
-            if (!match(s, p, indS, indP)) {
-                dp[indS][indP] = new Boolean(false);
-                return false;
+                // move p cursor after star
+                currP++;
+            } else if (isValidMatch(s, p, currP, currS)) {
+                /**
+                 * if its a perfect match, move both cursor forward
+                 */
+                currP++;
+                currS++;
             } else {
-                return helper(s, p, indS + 1, indP + 1);
-            }
-        } else {
-            if (helper(s, p, indS, indP + 1)) {
-                dp[indS][indP] = new Boolean(true);
-                return true;
-            }
-
-            int i = 1;
-            while (match(s, p, indS + i, indP + 1)) {
-                if (helper(s, p, indS + i, indP + 1)) {
-                    dp[indS][indP] = new Boolean(true);
-                    return true;
+                /**
+                 * if current cursors doesn't match and p is not in * matching state, return false
+                 */
+                if (dist == -1) {
+                    return false;
+                } else {
+                    /**
+                     * if doesn't match but its in * matching state
+                     * move curr p to after start
+                     * move matching distance one step forward in s and restart matching
+                     */
+                    dist++;
+                    currP = startP + 1;
+                    currS = startS + dist;
                 }
-                i++;
             }
-
-            dp[indS][indP] = new Boolean(false);
-            return false;
         }
+
+        // if s is finished and p is at *, move currP to the end of * sequence
+        while (currP < p.length() && p.charAt(currP) == '*')
+            currP++;
+
+        // check if both curr are off the end
+        return currP == p.length() && currS == s.length();
     }
 
-    private boolean match(String s, String p, int indS, int indP) {
-        if (indP == p.length())
-            return indS == s.length();
-
-        if (indS >= s.length()) {
-            return false;
-        }
-
-        if (p.charAt(indP) == s.charAt(indS)) {
-            return true;
-        }
-
-        if (p.charAt(indP) == '?') {
-            return true;
-        }
-
-        if (p.charAt(indP) == '*') {
-            return true;
-        }
-
-        return false;
+    private boolean isValidMatch(String s, String p, int currP, int currS) {
+        return currP < p.length() && (p.charAt(currP) == s.charAt(currS) || p.charAt(currP) == '?');
     }
 }
