@@ -28,7 +28,7 @@ public class isPalindromeList {
         }
 
         /**
-         * if next.next != null, there are odd number of nodes
+         * if next.next != null, there are even number of nodes
          * 1->2->2->1, for example
          * where s is staying at first 2
          */
@@ -41,7 +41,7 @@ public class isPalindromeList {
         }
 
         /**
-         * now, prev at start of reversed first have (not including middle node in even case)
+         * now, prev at start of reversed first have (not including middle node in off case)
          * next at start of second half (not including middle node)
          * compare one by one
          */
