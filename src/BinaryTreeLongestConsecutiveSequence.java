@@ -21,19 +21,19 @@ public class BinaryTreeLongestConsecutiveSequence {
         if (root == null)
             return 0;
 
-        helper(root, null);
+        helper(root);
 
         return max;
     }
 
-    private ReturnType helper(TreeNode root, TreeNode prev) {
+    private ReturnType helper(TreeNode root) {
         // base case
         if (root == null)
             return new ReturnType(0, 0);
 
         // divide
-        ReturnType left = helper(root.left, root);
-        ReturnType right = helper(root.right, root);
+        ReturnType left = helper(root.left);
+        ReturnType right = helper(root.right);
 
         // if this current node value is consecutive sequence of current node
         int tmp = 0;
