@@ -5,30 +5,40 @@ import java.util.*;
  */
 public class Twitter {
     private class Tweet {
-        int userId;
         int tweetId;
+        int order;
 
-        public Tweet(int userId, int tweetId) {
-            this.userId = userId;
+        public Tweet(int tweetId, int order) {
             this.tweetId = tweetId;
+            this.order = order;
         }
     }
 
-    List<Tweet> tweets;
-    Map<Integer, Set<Integer>> follows = new HashMap<>();
+    int order = 0;
+    Map<Integer, List<Tweet>> tweets;
+    Map<Integer, Set<Integer>> follows;
 
     /**
      * Initialize your data structure here.
      */
     public Twitter() {
-        this.tweets = new ArrayList<>();
+        this.tweets = new HashMap<>();
+        this.follows = new HashMap<>();
     }
 
     /**
      * Compose a new tweet
      */
     public void postTweet(int userId, int tweetId) {
-        tweets.add(new Tweet(userId, tweetId));
+        if (tweets.containsKey(userId)) {
+            tweets.get(userId).add(new Tweet(tweetId, order));
+        } else {
+            List<Tweet> tmp = new ArrayList<>();
+            tmp.add(new Tweet(tweetId, order));
+            tweets.put(userId, tmp);
+        }
+        order++;
+
         follow(userId, userId);
     }
 
@@ -42,22 +52,29 @@ public class Twitter {
         Set<Integer> following = follows.get(userId);
 
         if (following == null)
-            following = new HashSet();
+            following = new HashSet<>();
 
-        for (int i = tweets.size() - 1; i >= 0; i--) {
-            Tweet curr = tweets.get(i);
-
-            if (!following.contains(curr.userId)) {
-                continue;
-            } else {
-                counter++;
-                rst.add(curr.tweetId);
-
-                if (counter == 10)
-                    break;
+        Comparator<Tweet> comparitor = new Comparator<Tweet>() {
+            @Override
+            public int compare(Tweet o1, Tweet o2) {
+                return o2.order - o1.order;
             }
+        };
+        PriorityQueue<Tweet> pq = new PriorityQueue<>(comparitor);
+
+        for (int followee : following) {
+            List<Tweet> tmp = tweets.get(followee);
+
+            if (tmp == null)
+                tmp = new ArrayList<>();
+
+            pq.addAll(tmp);
         }
 
+        while (!pq.isEmpty() && counter < 10) {
+            rst.add(pq.poll().tweetId);
+            counter++;
+        }
         return rst;
     }
 
