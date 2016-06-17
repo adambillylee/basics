@@ -1,9 +1,9 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by adamli on 2/28/16.
@@ -12,7 +12,7 @@ public class TreeUtilTest {
 
     @Test
     public void testGetRoot() throws Exception {
-        String[] actual = {"1","2","","3","4"};
+        String[] actual = {"1", "2", "", "3", "4"};
         TreeNode root = TreeUtil.getRoot(actual);
 
         assertArrayEquals(TreeUtil.printTree(root), actual);
@@ -56,10 +56,18 @@ public class TreeUtilTest {
         two.right = four;
         three.right = five;
 
-        String[] expected = {"0","1","","2","3","","","","4","","5"};
+        String[] expected = {"0", "1", "", "2", "3", "", "", "", "4", "", "5"};
 
         String[] actual = TreeUtil.printTree(root);
 
         assertArrayEquals(expected, actual);
+
+        root.print();
+    }
+
+    @Test
+    public void testGetRoot2() throws Exception {
+        TreeNode root = TreeUtil.getRoot(new String[]{"5","4","7","3","","2","","-1","","9"});
+        root.print();
     }
 }

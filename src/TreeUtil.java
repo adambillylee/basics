@@ -9,7 +9,7 @@ public class TreeUtil {
     public static TreeNode getRoot(String[] array) {
         ArrayList<String> list = new ArrayList<>();
 
-        for (int i=0; i<array.length; i++)
+        for (int i = 0; i < array.length; i++)
             list.add(array[i]);
 
         return getRoot(list);
@@ -28,11 +28,11 @@ public class TreeUtil {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int size = queue.size();
-            TreeNode curr = queue.poll();
 
-            for(int i=0; i<size; i++) {
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = queue.poll();
                 /**
                  * because this queue will have empty treeNodes
                  * we must stop when list index reaches the end
@@ -47,8 +47,9 @@ public class TreeUtil {
                  * it is possible to add null into queue
                  * since we need to add empty treeNode to maintain tree structure
                  */
-                if (left != null)
+                if (left != null) {
                     queue.offer(left);
+                }
 
                 TreeNode right = setNode(list, index++);
 
@@ -62,6 +63,12 @@ public class TreeUtil {
                     curr.left = left;
                     curr.right = right;
                 }
+
+                if (left == null && right != null) {
+                    list.add(index, "");
+                    list.add(index, "");
+                    index += 2;
+                }
             }
         }
 
@@ -70,14 +77,18 @@ public class TreeUtil {
 
     /**
      * return treeNode with value or null
+     *
      * @param list  incoming arraylist
      * @param index index of array list
-     * @return  TreeNode or null
+     * @return TreeNode or null
      */
     public static TreeNode setNode(ArrayList<String> list, int index) {
+        if (index >= list.size())
+            return null;
+
         String val = list.get(index);
 
-        if (val.equals(""))
+        if (val.equals("") || val.equals("#"))
             return null;
         else
             return new TreeNode(Integer.valueOf(val));
@@ -98,7 +109,7 @@ public class TreeUtil {
          * use counter to track non null node count in queue, stop when all nodes in queue is null
          */
         int nonNullNodesInQueue = 1;
-        while(nonNullNodesInQueue > 0) {
+        while (nonNullNodesInQueue > 0) {
             TreeNode curr = queue.poll();
 
             if (curr == null) {
@@ -123,7 +134,7 @@ public class TreeUtil {
             if (curr.left != null)
                 nonNullNodesInQueue++;
 
-            if(curr.right != null)
+            if (curr.right != null)
                 nonNullNodesInQueue++;
 
             // add left and right when current node is not null

@@ -18,6 +18,8 @@ public class BinaryTreePathsTest {
         for (String ele : rst) {
             System.out.println(ele);
         }
+
+        root.print();
     }
 
 }
