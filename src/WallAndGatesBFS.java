@@ -7,97 +7,93 @@ import java.util.Queue;
  * Created by adamli on 6/9/16.
  */
 public class WallAndGatesBFS {
-    class Pair {
+    class Pair{
         int i;
         int j;
 
-        Pair(int i, int j) {
+        public Pair(int i, int j) {
             this.i = i;
             this.j = j;
         }
     }
 
+    int[][] rooms;
+    int m;
+    int n;
+    boolean visited[][];
+
     public void wallsAndGates(int[][] rooms) {
-        if (rooms.length == 0)
+        if (rooms == null || rooms.length == 0 || rooms[0].length == 0)
             return;
 
-        if (rooms[0].length == 0)
-            return;
+        this.rooms = rooms;
+        this.m = rooms.length;
+        this.n = rooms[0].length;
+        this.visited = new boolean[m][n];
 
-        int m = rooms.length;
-        int n = rooms[0].length;
+        Queue<Pair> queue = new LinkedList();
 
-        boolean visited[][] = new boolean[m][n];
-
-        int dist = 1;
-        Queue<Pair> curr = new LinkedList<>();
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (rooms[i][j] == 0) {
-                    visited[i][j] = true;
-                    curr.offer(new Pair(i, j));
-                }
+        // initialized queue
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (rooms[i][j] == 0)
+                    queue.offer(new Pair(i,j));
             }
         }
 
-        calDistance(rooms, curr, dist, visited);
-    }
+        //BFS
+        int dist = 0;
+        while (!queue.isEmpty()) {
+            int len = queue.size();
+            Queue<Pair> next = new LinkedList();
 
-    private void calDistance(int[][] rooms, Queue<Pair> curr, int dist, boolean visited[][]) {
-        while (!curr.isEmpty()) {
-            Queue<Pair> next = new LinkedList<>();
-            int len = curr.size();
+            for (int i=0; i<len; i++) {
+                Pair curr = queue.poll();
+                rooms[curr.i][curr.j] = dist;
 
-            for (int i = 0; i < len; i++) {
-                Pair tmp = curr.poll();
-
-                List<Pair> neighbours = extend(rooms, tmp, dist, visited);
-
+                List<Pair> neighbours = extend(curr);
                 next.addAll(neighbours);
             }
-            curr = next;
+
+            queue = next;
             dist++;
         }
     }
 
-    private List<Pair> extend(int[][] rooms, Pair tmp, int dist, boolean visited[][]) {
-        List<Pair> rst = new ArrayList<>();
+    private List<Pair> extend(Pair curr) {
+        List<Pair> rst = new ArrayList();
+        int i = curr.i;
+        int j = curr.j;
 
-        int i = tmp.i;
-        int j = tmp.j;
+        if (valid(i+1, j))
+            rst.add(new Pair(i+1,j));
 
-        if (validate(rooms, i, j + 1, dist, visited))
-            rst.add(new Pair(i, j + 1));
+        if (valid(i, j+1))
+            rst.add(new Pair(i,j+1));
 
-        if (validate(rooms, i + 1, j, dist, visited))
-            rst.add(new Pair(i + 1, j));
+        if (valid(i-1, j))
+            rst.add(new Pair(i-1,j));
 
-        if (validate(rooms, i, j - 1, dist, visited))
-            rst.add(new Pair(i, j - 1));
-
-        if (validate(rooms, i - 1, j, dist, visited))
-            rst.add(new Pair(i - 1, j));
+        if (valid(i, j-1))
+            rst.add(new Pair(i,j-1));
 
         return rst;
     }
 
-    private boolean validate(int[][] rooms, int i, int j, int dist, boolean visited[][]) {
+    private boolean valid(int i, int j) {
         if (i < 0 || j < 0)
             return false;
 
-        if (i >= rooms.length || j >= rooms[0].length)
-            return false;
-
-        if (rooms[i][j] == -1 || rooms[i][j] == 0)
+        if (i >= m || j >= n)
             return false;
 
         if (visited[i][j])
             return false;
 
-        visited[i][j] = true;
-        rooms[i][j] = dist;
+        if (rooms[i][j] != Integer.MAX_VALUE)
+            return false;
 
+        visited[i][j] = true;
         return true;
     }
 }
