@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by adamli on 4/26/16.
  */
-public class CloneGraph {
+public class CloneGraphDFS {
     class UndirectedGraphNode {
         int label;
         List<UndirectedGraphNode> neighbors;
