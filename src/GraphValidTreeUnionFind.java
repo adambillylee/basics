@@ -14,6 +14,9 @@ public class GraphValidTreeUnionFind {
             int y = find(orig, edges[i][1]);
             System.out.format("find[%d] = %d\n", edges[i][1], y);
 
+            /**
+             * if two node share the same origin, there is a cycle
+             */
             if (x == y)
                 return false;
 
@@ -22,6 +25,7 @@ public class GraphValidTreeUnionFind {
             System.out.println();
         }
 
+        // prevent the case where there is not enough edge to connect all nodes
         return edges.length == n - 1;
     }
 
