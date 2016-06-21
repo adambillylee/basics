@@ -13,15 +13,18 @@ public class WordBreakII {
     }
 
     private List<String> dfs(String s, Set<String> wordDict, Map<String, List<String>> dp) {
+        // dp
         if (dp.containsKey(s))
             return dp.get(s);
 
+        // if s is empty, make sure return an empty list as base case
         if (s.isEmpty()) {
             List<String> rst = new ArrayList<>();
             rst.add("");
             return rst;
         }
 
+        // DFS
         dp.put(s, new ArrayList<>());
         for (int i = 0; i <= s.length(); i++) {
             String curr = s.substring(i, s.length());
