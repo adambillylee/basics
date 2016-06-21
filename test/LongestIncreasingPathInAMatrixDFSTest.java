@@ -1,12 +1,12 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
- * Created by adamli on 6/20/16.
+ * Created by adamli on 6/21/16.
  */
-public class LongestIncreasingPathInAMetrixTopologicalSortTest {
-    LongestIncreasingPathInAMetrixTopologicalSort sol = new LongestIncreasingPathInAMetrixTopologicalSort();
+public class LongestIncreasingPathInAMatrixDFSTest {
+    LongestIncreasingPathInAMatrixDFS sol = new LongestIncreasingPathInAMatrixDFS();
 
     @Test
     public void longestIncreasingPath1() throws Exception {
@@ -29,5 +29,4 @@ public class LongestIncreasingPathInAMetrixTopologicalSortTest {
 
         assertEquals(2, sol.longestIncreasingPath(matrix));
     }
-
 }

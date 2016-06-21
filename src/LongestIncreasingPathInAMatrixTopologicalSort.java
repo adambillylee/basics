@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by adamli on 6/20/16.
  */
-public class LongestIncreasingPathInAMetrixTopologicalSort {
+public class LongestIncreasingPathInAMatrixTopologicalSort {
     public int longestIncreasingPath(int[][] matrix) {
         class Pair {
             int i;
