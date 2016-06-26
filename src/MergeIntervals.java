@@ -31,7 +31,7 @@ public class MergeIntervals {
             /**
              * if new interval overlaps on current interval,
              * BUGPOINT:
-             * update end interval with math of current end and new end (since current end could still be bigger)
+             * update end interval with max of current end and new end (since current end could still be bigger)
              */
             if (interval.start <= end) {
                 end = Math.max(end, interval.end);
