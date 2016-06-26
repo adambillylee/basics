@@ -5,23 +5,17 @@ public class BestTimeToBuyAndSellWithCoolDownAnotherSol {
 
         int buy = -prices[0];
         int coolDown = 0;
-        int sell = prices[1] - prices[0];
+        int sell = 0;
 
-        for (int i = 0; i < prices.length; i++) {
+        /**
+         * we initialized first buy, so loop starts after first buy
+         */
+        for (int i = 1; i < prices.length; i++) {
             int tmp = buy;
+
             buy = Math.max(buy, coolDown - prices[i]);
-
-            /**
-             * the first coolDown is only valid at i = 2 (day 3)
-             */
-            if (i >= 2)
-                coolDown = Math.max(sell, coolDown);
-
-            /**
-             * the first sell can only happen at i = 1 (day 2)
-             */
-            if (i >= 1)
-                sell = tmp + prices[i];
+            coolDown = Math.max(sell, coolDown);
+            sell = tmp + prices[i];
         }
 
         return Math.max(coolDown, sell);
