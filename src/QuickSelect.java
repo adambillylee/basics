@@ -11,8 +11,7 @@ public class QuickSelect {
         int pivot = arr[hi];
 
         /**
-         * boundary is the first element >= pivot
-         * everything on the left of boundary should be < pivot
+         * everything on the left of (but not include) boundary should be < pivot
          */
         int boundary = lo;
 
