@@ -11,18 +11,25 @@ public class QuickSelectTest {
     QuickSelect sol = new QuickSelect();
 
     @Test
-    public void testSelect() {
-        int[] test = new int[]{7, 9, 2, 3, 5, 1, 4};
-        List<Integer> a = new ArrayList<>();
+    public void testSelectNonDup() {
+        int[] test = {7, 9, 2, 3, 5, 1, 4};
+        int[] sorted = {1, 2, 3, 4, 5, 7, 9};
 
-        // left boundary
-        Assert.assertEquals(sol.quickSelect(test, 1), 1);
+        for (int i = 0; i < test.length; i++) {
+            int tmp = sorted[i];
+            Assert.assertEquals(sol.quickSelect(test, i+1), tmp);
+        }
+    }
 
-        // right boundary
-        Assert.assertEquals(sol.quickSelect(test, 7), 9);
+    @Test
+    public void testSelectWithDup() {
+        int[] test = new int[]{7, 7, 2, 3, 5, 1, 4};
+        int[] sorted = {1, 2, 3, 4, 5, 7, 7};
 
-        // random number
-        Assert.assertEquals(sol.quickSelect(test, 3), 3);
+        for (int i = 0; i < test.length; i++) {
+            int tmp = sorted[i];
+            Assert.assertEquals(sol.quickSelect(test, i+1), tmp);
+        }
     }
 
 }
