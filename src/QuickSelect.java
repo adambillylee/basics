@@ -16,8 +16,8 @@ public class QuickSelect {
         int boundary = lo;
 
         /**
-         * from left to right -1:
-         * all elements should be smaller than pivot
+         * from left to right - 1:
+         * put all element < left to the boundary to move boundary forward
          */
         for (int i = lo; i < hi; i++) {
             /**
