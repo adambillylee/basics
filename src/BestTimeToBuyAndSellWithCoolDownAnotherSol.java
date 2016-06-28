@@ -14,8 +14,15 @@ public class BestTimeToBuyAndSellWithCoolDownAnotherSol {
             int tmp = buy;
 
             buy = Math.max(buy, coolDown - prices[i]);
+            System.out.println("buy: " + buy);
+
             coolDown = Math.max(sell, coolDown);
+            System.out.println("coolDown: " + coolDown);
+
             sell = tmp + prices[i];
+            System.out.println("sell: " + sell);
+
+            System.out.println();
         }
 
         return Math.max(coolDown, sell);
