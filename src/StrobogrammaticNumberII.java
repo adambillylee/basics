@@ -16,15 +16,7 @@ public class StrobogrammaticNumberII {
         if (n <= 0)
             return rst;
 
-        self = new HashMap<>();
-        pair = new HashMap<>();
-
-        self.put("1", "1");
-        self.put("0", "0");
-        self.put("8", "8");
-        pair.putAll(self);
-        pair.put("6", "9");
-        pair.put("9", "6");
+        setup();
 
         if (n % 2 == 0) {
             helper(rst, "", n, n);
@@ -37,6 +29,18 @@ public class StrobogrammaticNumberII {
         return rst;
     }
 
+    private void setup() {
+        self = new HashMap<>();
+        pair = new HashMap<>();
+
+        self.put("1", "1");
+        self.put("0", "0");
+        self.put("8", "8");
+        pair.putAll(self);
+        pair.put("6", "9");
+        pair.put("9", "6");
+    }
+
     private void helper(List<String> rst, String s, int len, int n) {
         if (len <= 0) {
             rst.add(s);
@@ -44,6 +48,11 @@ public class StrobogrammaticNumberII {
         }
 
         for (String i : pair.keySet()) {
+            /**
+             * 0 cannot be at the first number
+             * DFS is from inside to outside
+             * when len = 2, its the outer most level
+             */
             if (len == 2 && i.equals("0"))
                 continue;
 
