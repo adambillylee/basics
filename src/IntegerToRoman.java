@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by adamli on 5/26/16.
@@ -23,8 +22,11 @@ public class IntegerToRoman {
         unitToNumber.put("V", 5);
         unitToNumber.put("IV", 4);
         unitToNumber.put("I", 1);
-
         StringBuilder sb = new StringBuilder();
+
+        List<Character> a = new ArrayList<>();
+        a.add('3');
+        a.indexOf('3');
 
         int value = 0;
         while (num > 0) {
