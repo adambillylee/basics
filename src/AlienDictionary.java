@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class AlienDictionary {
     private boolean to[][] = new boolean[26][26];
     private int outDegree[] = new int[26];
     private Set<Character> alphabets = new HashSet<>();
