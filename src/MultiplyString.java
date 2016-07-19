@@ -26,6 +26,6 @@ public class MultiplyString {
                 sb.append(i);
         }
 
-        return sb.toString();
+        return sb.length() == 0 ? "0" : sb.toString();
     }
 }
