@@ -26,11 +26,12 @@ public class PascalsTriangle {
     }
 
     private int getNum(int i, int j, List<List<Integer>> rst) {
-        int topLength = rst.get(i - 1).size();
+        if (i == j || j == 0)
+            return 1;
 
         // number on top left + number on top
-        int topLeft = j - 1 >= 0 ? rst.get(i - 1).get(j - 1) : 0;
-        int top = j < topLength ? rst.get(i - 1).get(j) : 0;
+        int topLeft =  rst.get(i - 1).get(j - 1);
+        int top = rst.get(i - 1).get(j);
 
         return topLeft + top;
     }
