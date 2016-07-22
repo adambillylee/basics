@@ -1,0 +1,2 @@
+select t1.id, t1.sname
+from (select student.id, student.sname from student join sc on sc.sid = student.id join course on sc.cid = course.id where course.cname = "d") t1 where exists (select student.id, student.sname from student join sc on sc.sid = student.id join course on sc.cid = course.id where course.cname = "c");

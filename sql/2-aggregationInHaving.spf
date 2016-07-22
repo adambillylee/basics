@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>leetcode</string>
+			<key>host</key>
+			<string>localhost</string>
+			<key>kcid</key>
+			<string>-8086204013488500081</string>
+			<key>name</key>
+			<string>local</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSocketConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>root</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGJyhYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYdJFUkbnVsbNMJCgsMDxJX
+			TlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAF
+			gAdUdHlwZVRyb3dzXxAdU2VsZWN0aW9uRGV0YWlsVHlwZU5TSW5k
+			ZXhTZXTUFwsYGRobHBxaTlNMb2NhdGlvblxOU1JhbmdlQ291bnRY
+			TlNMZW5ndGgQBYAGEAHSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2Vz
+			Wk5TSW5kZXhTZXSiIiNaTlNJbmRleFNldFhOU09iamVjdNIeHyUm
+			XE5TRGljdGlvbmFyeaIlI18QD05TS2V5ZWRBcmNoaXZlctEpKlRk
+			YXRhgAEACAARABoAIwAtADIANwBAAEYATQBVAGAAZwBqAGwAbgBx
+			AHMAdQB3AHwAgQChAKoAtQDCAMsAzQDPANEA1gDhAOoA9QD4AQMB
+			DAERAR4BIQEzATYBOwAAAAAAAAIBAAAAAAAAACsAAAAAAAAAAAAA
+			AAAAAAE9
+			</data>
+			<key>contentSortCol</key>
+			<string>sid</string>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {923, 640}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>select t1.sname
+from (select student.sname, student.id, score from student join sc on sc.sid = student.id join course where course.id = sc.cid and course.cname = "a") t1,
+(select student.sname, student.id, score from student join sc on sc.sid = student.id join course where course.id = sc.cid and course.cname = "b") t2
+where t1.score &gt; t2.score and t1.id = t2.id;</string>
+			<key>table</key>
+			<string>SC</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>379</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>select distinct(concat(t2.sid, ",", t2.sname))
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(concat(t2.sid, t2.sid, t2.sname))
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(concat(t2.sid, t2.sname))
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(concat(sid, sname))
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(t2.id), distinct(t2.sname)
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(t1.id), distinct(t2.sname)
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(t2.sname)
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(s2.sname)
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t2.sid, t2.sname
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t2.id, t2.sname
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc join student on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t2.id, t2.sname
+from (select sid, sname, cid from sc join student on sc.sid = student.id where sid = 1) t1, (select sid, sname, cid from sc on sc.sid = student.id where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t2.id, t2.sname
+from (select sid, sname, cid from sc where sid = 1) t1, (select sid, sname, cid from sc where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select id, sname
+from (select sid, sname, cid from sc where sid = 1) t1, (select sid, sname, cid from sc where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(t2.sid)
+from (select sid, cid from sc where sid = 1) t1, (select sid, cid from sc where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select distinct(t2.sid)
+from (select sid, cid from sc where sid = '1') t1, (select sid, cid from sc where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t2.sid
+from (select sid, cid from sc where sid = '1') t1, (select sid, cid from sc where sid != 1) t2
+where t1.cid = t2.cid</string>
+		<string>select t1.sid
+from (select sid, cid from sc where sid = '1') t1, (select sid, cid from sc) t2
+where t1.sid != t2.sid and t1.cid = t2.cid</string>
+		<string>select t1.sid
+from (select sid, cid from sc where sid = '1') t1, (select sid, cid from sc), t2
+where t1.sid != t2.sid and t1.cid = t2.cid</string>
+		<string>select id, sname
+from student
+where id in
+(select distinct(student.id) 
+from student 
+join sc on sc.sid = student.id join course on sc.cid = course.id 
+group by student.id 
+having count(sc.cid) &lt;
+	(select count(id) from course)
+)</string>
+		<string>select id, sname
+from student
+where id in
+(select distinct(student.id) from student join sc on sc.sid = student.id join course on sc.cid = course.id group by student.id having count(sc.cid) &lt;
+	(select count(id) from course)
+)</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.7.11</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
