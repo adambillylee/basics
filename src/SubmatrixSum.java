@@ -6,7 +6,7 @@ public class SubmatrixSum {
      * @param matrix
      * @return
      */
-    public int submatrixSum(int[][] matrix, int l, int t, int r, int b) {
+    public int submatrixSum(int[][] matrix, int left, int top, int right, int bottom) {
         if (matrix.length == 0 || matrix == null)
             return 0;
         if (matrix[0].length == 0)
@@ -31,6 +31,6 @@ public class SubmatrixSum {
             }
         }
 
-        return sum[r+1][b+1] - sum[t][r+1] - sum[l][b+1] + sum[t][l];
+        return sum[right+1][bottom+1] - sum[top][right+1] - sum[left][bottom+1] + sum[top][left];
     }
 }
