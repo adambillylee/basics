@@ -40,4 +40,19 @@ public class PermutationTest {
             System.out.println("]");
         }
     }
+
+    @Test
+    public void testPermutation3() throws Exception {
+        int input[] = {1,2,3,4};
+
+        ArrayList<ArrayList<Integer>> rst = sol.permutation(input);
+
+        for (int i=0; i<rst.size(); i++) {
+            System.out.print("[");
+            for (int j=0; j<rst.get(i).size(); j++) {
+                System.out.print(rst.get(i).get(j));
+            }
+            System.out.println("]");
+        }
+    }
 }
