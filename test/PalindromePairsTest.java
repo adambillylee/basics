@@ -11,12 +11,12 @@ public class PalindromePairsTest {
 
     @Test
     public void palindromePairstest1() throws Exception {
-        String words[] = {"bat", "tab", "cat"};
+        String words[] = {"aabc", "aa"};
         List<List<Integer>> rst = sol.palindromePairs(words);
 
         for (List<Integer> list : rst) {
             for (int tmp : list) {
-                System.out.print(words[tmp]);
+                System.out.print(words[tmp] + "  ");
             }
             System.out.println();
         }
@@ -30,14 +30,13 @@ public class PalindromePairsTest {
         System.out.println();
         for (List<Integer> list : rst) {
             for (int tmp : list) {
-                System.out.print(words[tmp]);
+                System.out.print(words[tmp] + " ");
             }
             System.out.println();
         }
     }
 
     @Test
-    @Ignore
     public void palindromePairstest3() throws Exception {
         String words[] = {"a", ""};
         List<List<Integer>> rst = sol.palindromePairs(words);
@@ -45,7 +44,7 @@ public class PalindromePairsTest {
         System.out.println();
         for (List<Integer> list : rst) {
             for (int tmp : list) {
-                System.out.print(words[tmp]);
+                System.out.print(words[tmp] + " ");
             }
             System.out.println();
         }
