@@ -15,10 +15,10 @@ public class TopKInStreamWithQuickSelect {
                 list.add(iterator.next());
             }
 
-            // quick select, move > top to the later part
+            // use quickselect to move top K threashold in place
             rst = quickSelect(list, k);
 
-            // drop everything before top k
+            // drop everything outside of top k
             if (list.size() == 2 * k)
                 list = list.subList(0, k);
         }
