@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * Created by adamli on 8/8/16.
  */
-public class SolutionTest {
-    Solution sol = new Solution();
+public class TopKInStreamWithQuickSelectTest {
+    TopKInStreamWithQuickSelect sol = new TopKInStreamWithQuickSelect();
 
     @Test
     public void testTopK() throws Exception {

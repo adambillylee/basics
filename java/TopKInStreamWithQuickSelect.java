@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by adamli on 8/8/16.
  */
-public class Solution {
+public class TopKInStreamWithQuickSelect {
     List<Integer> list = new ArrayList<>();
 
     public int topK(Iterator<Integer> iterator, int k) {
