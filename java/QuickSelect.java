@@ -5,12 +5,12 @@ public class QuickSelect {
         int lo = 0, hi = arr.length - 1;
         while (lo < hi) {
             int j = partition(arr, lo, hi);
-            if (j == k) {
+            if (j == k - 1) {
                 /**
                  * should be returning k-1, as k is one based and index is zero based
                  */
                 return arr[k - 1];
-            } else if (j < k) {
+            } else if (j < k - 1) {
                 lo = j + 1;
             } else {
                 hi = j - 1;
