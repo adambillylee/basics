@@ -43,6 +43,7 @@ public class AlienDictionary {
         // take the shortest of curr and next
         int len = Math.min(curr.length(), next.length());
 
+        // use an index to go through both words
         int index = 0;
         while (index < len) {
             char c1 = curr.charAt(index);
@@ -51,17 +52,21 @@ public class AlienDictionary {
             if (c1 == c2) {
                 index++;
             } else {
+                // find the first difference point
                 if (!to[c1 - 'a'][c2 - 'a']) {
+                    // if alphabet relationship is not setup, set it up now and add out-degree by 1
                     outDegree[c1 - 'a']++;
                     to[c1 - 'a'][c2 - 'a'] = true;
                 }
 
+                // break after first difference point
                 break;
             }
         }
     }
 
     private String topoSort() {
+        // always put no out-degree nodes into queue
         Queue<Character> zeroOut = new LinkedList<>();
         zeroOut.addAll(findZeroOut());
 
@@ -69,6 +74,7 @@ public class AlienDictionary {
         int len = alphabets.size();
 
         while (!zeroOut.isEmpty()) {
+            // poll out curr char, add to result and remove from candidates
             char curr = zeroOut.poll();
             sb.append(curr);
             alphabets.remove(curr);
@@ -77,37 +83,49 @@ public class AlienDictionary {
             for (int i = 0; i < 26; i++) {
                 char before = (char) ('a' + i);
 
+                // only can valid candidates
                 if (!alphabets.contains(before))
                     continue;
 
+                // skip current curr
                 if (before == curr)
                     continue;
 
+                // skip char with no relationship
                 if (!to[before - 'a'][curr - 'a'])
                     continue;
 
                 // remove path
                 to[before - 'a'][curr - 'a'] = false;
+
+                // decrease outdegree by 1
                 outDegree[before - 'a']--;
 
+                // if next candidate is of outdegree 0, add it into queue
                 if (outDegree[before - 'a'] == 0) {
                     zeroOut.add(before);
                 }
             }
         }
 
+        // reverse result
         String rst = sb.reverse().toString();
-        return rst.length() == len ? rst : "";
+
+        // if not all candidates are in result, there is a cycle, if not, return result
+        return alphabets.size() == 0 ? rst : "";
     }
 
+    // look for alphabet with outdegree = 0
     private List<Character> findZeroOut() {
         List<Character> rst = new ArrayList<>();
 
         for (int i = 0; i < 26; i++) {
             char curr = (char) ('a' + i);
+            // only look for valid alphabets
             if (!alphabets.contains(curr))
                 continue;
 
+            // if outdegree = 0, add it into result
             if (outDegree[curr - 'a'] == 0) {
                 rst.add(curr);
             }
