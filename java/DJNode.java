@@ -6,8 +6,8 @@ import java.util.Set;
  */
 public class DJNode {
     int val;
-    int path;
-    DJNode prev;
+    int path;   // current path length from start to here
+    DJNode prev;    // prev node on the path
     Set<DJEdge> edges;
 
     DJNode(int val) {
