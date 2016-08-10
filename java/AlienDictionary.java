@@ -4,6 +4,7 @@ public class AlienDictionary {
     private boolean to[][] = new boolean[26][26];
     private int outDegree[] = new int[26];
     private Set<Character> alphabets = new HashSet<>();
+    // private Set<Character> visited = new HashSet<>();
 
     public String alienOrder(String[] words) {
         if (words == null || words.length == 0)
@@ -20,48 +21,44 @@ public class AlienDictionary {
             String curr = words[i];
             String next = words[i + 1];
 
-            addNodeInword(curr);
+            addAlphabet(curr);
 
-            if (!addNodeAcrossWords(curr, next))
-                return false;
+            addAlphabetPair(curr, next);
         }
 
-        addNodeInword(words[words.length - 1]);
+        addAlphabet(words[words.length - 1]);
 
         return true;
     }
 
-    private void addNodeInword(String word) {
-        for (int i = 0; i < word.length() - 1; i++) {
+    private void addAlphabet(String word) {
+        for (int i = 0; i < word.length(); i++) {
             char curr = word.charAt(i);
-            char next = word.charAt(i + 1);
 
             alphabets.add(curr);
-            alphabets.add(next);
         }
     }
 
-    private boolean addNodeAcrossWords(String curr, String next) {
+    private void addAlphabetPair(String curr, String next) {
+        // take the shortest of curr and next
         int len = Math.min(curr.length(), next.length());
 
         int index = 0;
         while (index < len) {
             char c1 = curr.charAt(index);
             char c2 = next.charAt(index);
-            alphabets.add(c1);
-            alphabets.add(c2);
 
             if (c1 == c2) {
                 index++;
             } else {
-                to[c1 - 'a'][c2 - 'a'] = true;
-                System.out.println("from " + c1 + " to " + c2);
+                if (!to[c1 - 'a'][c2 - 'a']) {
+                    outDegree[c1 - 'a']++;
+                    to[c1 - 'a'][c2 - 'a'] = true;
+                }
 
                 break;
             }
         }
-
-        return true;
     }
 
     private String topoSort() {
@@ -91,13 +88,10 @@ public class AlienDictionary {
 
                 // remove path
                 to[before - 'a'][curr - 'a'] = false;
-//                System.out.println("remove " + before + " to " + curr);
                 outDegree[before - 'a']--;
-//                System.out.println("degree of " + before + " to " + outDegree[before - 'a']);
 
                 if (outDegree[before - 'a'] == 0) {
                     zeroOut.add(before);
-//                    System.out.println("add : " + before);
                 }
             }
         }
@@ -116,7 +110,6 @@ public class AlienDictionary {
 
             if (outDegree[curr - 'a'] == 0) {
                 rst.add(curr);
-//                System.out.println("add : " + curr);
             }
         }
         return rst;
