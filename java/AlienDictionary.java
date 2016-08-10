@@ -71,8 +71,6 @@ public class AlienDictionary {
         zeroOut.addAll(findZeroOut());
 
         StringBuilder sb = new StringBuilder();
-        int len = alphabets.size();
-
         while (!zeroOut.isEmpty()) {
             // poll out curr char, add to result and remove from candidates
             char curr = zeroOut.poll();
