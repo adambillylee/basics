@@ -125,7 +125,7 @@ public class AlienDictionary {
             if (!alphabets.contains(curr))
                 continue;
 
-            // if outdegree = 0, add it into result
+            // if out-degree = 0, add it into result
             if (outDegree[curr - 'a'] == 0) {
                 rst.add(curr);
             }
