@@ -29,4 +29,13 @@ public class MatrixSpiralPrintTest {
         sol.printSpiralMatrix(matrix);
     }
 
+    @Test
+    public void testPrintRandom3() throws Exception {
+        int matrix[][] = {
+                {1,2}
+        };
+
+        sol.printSpiralMatrix(matrix);
+    }
+
 }

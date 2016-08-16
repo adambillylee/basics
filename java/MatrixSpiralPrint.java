@@ -14,36 +14,43 @@ public class MatrixSpiralPrint {
         int cs = 0;
         int ce = N - 1;
 
-        int count = 0;
 
-        while (count < M * N) {
+        while (true) {
             // upper
             for (int i = cs; i <= ce; i++) {
                 System.out.print(matrix[rs][i] + " ");
-                count++;
             }
             rs++;
+
+            if (rs > re)
+                return;
 
             // right
             for (int i = rs; i <= re; i++) {
                 System.out.print(matrix[i][ce] + " ");
-                count++;
             }
             ce--;
+
+            if (cs > ce)
+                return;
 
             // bottom
             for (int i = ce; i >= cs; i--) {
                 System.out.print(matrix[re][i] + " ");
-                count++;
             }
             re--;
+
+            if (rs > re)
+                return;
 
             // left
             for (int i = re; i >= rs; i--) {
                 System.out.print(matrix[i][cs] + " ");
-                count++;
             }
             cs++;
+
+            if (cs > cs)
+                return;
         }
     }
 }
