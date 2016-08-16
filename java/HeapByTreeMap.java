@@ -16,7 +16,7 @@ public class HeapByTreeMap {
 
         while (!heap.isEmpty()) {
             System.out.println(heap.lastKey());
-            heap.remove(heap.firstKey());
+            heap.remove(heap.lastKey());
         }
     }
 
