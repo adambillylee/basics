@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Created by adamli on 5/11/16.
  */
-public class MergeKSortedLists {
+public class MergeKSortedListsNoHeap {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0)
             return null;
@@ -38,41 +38,34 @@ public class MergeKSortedLists {
 
     // merge two sorted linked lists
     ListNode mergeTwo(ListNode head1, ListNode head2) {
+        // make sure curr = dummy to start
         ListNode dummy = new ListNode(-1);
-        ListNode curr = new ListNode(-1);
-        dummy.next = curr;
+        ListNode curr = dummy;
 
         while (head1 != null || head2 != null) {
             // if one of the input head is null, add the other into rst
             if (head1 == null) {
-                curr.next = new ListNode(head2.val);
-                head2 = head2.next;
-                curr = curr.next;
-                continue;
+                curr.next = head2;
+                break;
             }
 
             if (head2 == null) {
-                curr.next = new ListNode(head1.val);
-                head1 = head1.next;
-                curr = curr.next;
-                continue;
+                curr.next = head1;
+                break;
             }
 
             // if both of then are not null, add smaller one into result
             if (head1.val < head2.val) {
-                curr.next = new ListNode(head1.val);
+                curr.next = head1;
                 head1 = head1.next;
                 curr = curr.next;
             } else {
-                curr.next = new ListNode(head2.val);
+                curr.next = head2;
                 head2 = head2.next;
                 curr = curr.next;
             }
-
-
-
         }
 
-        return dummy.next.next;
+        return dummy.next;
     }
 }
