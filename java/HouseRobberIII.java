@@ -1,35 +1,41 @@
 /**
- * Created by adamli on 4/26/16.
+ * Created by adamli on 8/17/16.
  */
 public class HouseRobberIII {
-    public int rob(TreeNode root) {
-        if (root == null)
-            return 0;
+    class ReturnType {
+        int rob;
+        int notRob;
 
-        int rst[] = helper(root);
-
-        return Math.max(rst[0], rst[1]);
-    }
-
-    public int[] helper(TreeNode root) {
-        if (root == null) {
-            return new int[2];
+        public ReturnType() {
         }
 
-        /**
-         * 0 in case of not rob
-         * 1 in case of rob
-         */
-        int rst[] = new int[2];
+        public ReturnType(int rob, int notRob) {
+            this.rob = rob;
+            this.notRob = notRob;
+        }
+    }
 
-        int left[] = helper(root.left);
-        int right[] = helper(root.right);
+    public int rob(TreeNode root) {
+        ReturnType rst = dfs(root);
 
-        // if rob this
-        rst[1] = left[0] + right[0] + root.val;
+        return Math.max(rst.rob, rst.notRob);
+    }
 
-        // if not rob this
-        rst[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+    private ReturnType dfs(TreeNode root) {
+        if (root == null)
+            return new ReturnType(0, 0);
+
+        ReturnType left = dfs(root.left);
+        ReturnType right = dfs(root.right);
+
+        // rob case: max of left not rob + right not rob + current value
+        ReturnType rst = new ReturnType();
+        rst.rob = left.notRob + right.notRob + root.val;
+
+        // not rob case: max of left + max of right, both side can either be robbed or not
+        int leftMax = Math.max(left.notRob, left.rob);
+        int rightMax = Math.max(right.notRob, right.rob);
+        rst.notRob = leftMax + rightMax;
 
         return rst;
     }
