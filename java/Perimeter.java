@@ -25,7 +25,7 @@ public class Perimeter {
     }
 
     private int bfs(int[][] input, int x, int y) {
-        int area = 0;
+        int rst = 0;
         Pair start = new Pair(x, y);
 
         Queue<Pair> queue = new LinkedList<Pair>();
@@ -36,12 +36,12 @@ public class Perimeter {
             input[curr.x][curr.y] = 2;
 
             if (isOnBoundary(input, curr.x, curr.y))
-                area++;
+                rst++;
 
             queue.addAll(expend(curr, input));
         }
 
-        return area;
+        return rst;
     }
 
     private List<Pair> expend(Pair curr, int input[][]) {
