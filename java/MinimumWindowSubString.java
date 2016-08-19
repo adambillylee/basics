@@ -20,15 +20,18 @@ public class MinimumWindowSubString {
         while (j < s.length()) {
             while (j < s.length() && !covers(currMap, targetMap)) {
                 currMap[s.charAt(j) - 'A']++;
+                // use StringBuilder instead of index to keep track of update
                 curr.append(s.charAt(j));
                 j++;
             }
 
             while (i < j && covers(currMap, targetMap)) {
+                // only update status at start of condition satisfied loop
                 if (covers(currMap, targetMap))
                     min = update(min, curr);
 
                 currMap[s.charAt(i) - 'A']--;
+                // use StringBuilder instead of index to keep track of update
                 curr = curr.deleteCharAt(0);
 
                 i++;
