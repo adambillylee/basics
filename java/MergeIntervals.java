@@ -14,14 +14,7 @@ public class MergeIntervals {
         if (intervals.size() <= 1)
             return intervals;
 
-        // sort all intervals by start time first
-        Comparator<Interval> comparator = new Comparator<Interval>() {
-            @Override
-            public int compare(Interval o1, Interval o2) {
-                return o1.start - o2.start;
-            }
-        };
-        Collections.sort(intervals, comparator);
+        Collections.sort(intervals, (i1, i2) -> (i1.start - i2.start));
 
         // set first start and end from first interval
         int start = intervals.get(0).start;
