@@ -40,11 +40,13 @@ public class RecoverBST {
             last = curr;
         }
 
+        // case 1: two swapped elements are next to each other
         if (peak2 == null) {
             int val = peak1.val;
             peak1.val = valley1.val;
             valley1.val = val;
         }else{
+            // case 2: two swapped element are separated
             int val = peak1.val;
             peak1.val = valley2.val;
             valley2.val = val;
