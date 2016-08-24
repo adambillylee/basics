@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class GroupContacts {
     private int[] father;
-    private int[] rank;
+    private int[] level;
 
     List<List<Contact>> groupContacts(List<Contact> input) {
         Map<String, List<Integer>> emailMap = new HashMap<>();
@@ -66,10 +66,14 @@ public class GroupContacts {
 
     private void InitUnionFind(int n) {
         father = new int[n];
-        rank = new int[n];
+        level = new int[n];
+
         for (int i = 0; i < n; i++) {
+            // set father of each element to be itself
             father[i] = i;
-            rank[i] = 0;
+
+            // set all element level to be zero (which is the lowest level)
+            level[i] = 0;
         }
     }
 
@@ -81,15 +85,15 @@ public class GroupContacts {
         if (x == y)
             return;
 
-        // set the higher rank in the pair to be the father
-        if (rank[x] < rank[y]) {
+        // set the higher level in the pair to be the father
+        if (level[x] < level[y]) {
             father[x] = y;
         } else {
             father[y] = x;
 
-            // if rank are the same, set rank of x higher by 1
-            if (rank[x] == rank[y])
-                rank[x]++;
+            // if level are the same, set level of x up by 1
+            if (level[x] == level[y])
+                level[x]++;
         }
     }
 
