@@ -4,15 +4,6 @@ import java.util.*;
  * Created by adamli on 6/19/16.
  */
 public class CloneGraphBFS {
-    class UndirectedGraphNode {
-        int label;
-        List<UndirectedGraphNode> neighbors;
-
-        UndirectedGraphNode(int x) {
-            label = x;
-            neighbors = new ArrayList<UndirectedGraphNode>();
-        }
-    }
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null)
