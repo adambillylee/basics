@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class BinaryTreePathsTest {
     @Test
     public void binaryTreePaths() throws Exception {
-        TreeNode root = TreeUtil.getRoot(new String[]{"1","2","3"});
+        TreeNode root = TreeUtil.getRoot(new String[]{"1","2","3", "4", "#"});
 
         List<String> rst = BinaryTreePaths.binaryTreePaths(root);
 

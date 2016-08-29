@@ -4,11 +4,11 @@ import java.util.List;
 public class BinaryTreePaths {
     public static List<String> binaryTreePaths(TreeNode root) {
         List<String> rst = new ArrayList<String>();
-        helper(root, new StringBuffer(), rst);
+        helper(root, new StringBuilder(), rst);
         return rst;
     }
 
-    public static void helper(TreeNode root, StringBuffer path, List<String>rst) {
+    public static void helper(TreeNode root, StringBuilder path, List<String>rst) {
         if (root == null)
             return;
 
